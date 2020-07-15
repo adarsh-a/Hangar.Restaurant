@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Hangar.Restaurant.Models
 {
-    public class MenuType
+    public class MenuTypeEntity
     {
 
         public string ID { get; set; }

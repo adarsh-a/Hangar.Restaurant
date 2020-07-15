@@ -11,9 +11,9 @@ namespace Hangar.Restaurant.Database
         {
         }
         public DbSet<MenuSectionEntity> MenuSection { get; set; }
-        public DbSet<MenuType> MenuTypes { get; set; }
-        public DbSet<Menu> Menus { get; set; }
-        public DbSet<SpecialMenu> SpecialMenus { get; set; }
+        public DbSet<MenuTypeEntity> MenuTypes { get; set; }
+        public DbSet<MenuEntity> Menus { get; set; }
+        public DbSet<SpecialMenuEntity> SpecialMenus { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
