@@ -12,8 +12,10 @@ namespace Hangar.Restaurant.Models
         public string Name { get; set; }
         public double Price { get; set; }
         public string Description { get; set; }
-        [ForeignKey("MenuId")]
-        public MenuType MenuId { get; set; }
+        [ForeignKey("MenuTypeID")]
+        public MenuType Type { get; set; }
+        public string MenuTypeID { get; set; }
         public string Image { get; set; }
+        public string menuList { get; set; }
     }
 }

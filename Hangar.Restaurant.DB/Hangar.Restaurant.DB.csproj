@@ -60,6 +60,10 @@
     <Compile Include="Migrations\202007141856067_allTbl.designer.cs">
       <DependentUpon>202007141856067_allTbl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007151236044_MenutypeForeign.cs" />
+    <Compile Include="Migrations\202007151236044_MenutypeForeign.designer.cs">
+      <DependentUpon>202007151236044_MenutypeForeign.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -70,6 +74,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202007141856067_allTbl.resx">
       <DependentUpon>202007141856067_allTbl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007151236044_MenutypeForeign.resx">
+      <DependentUpon>202007151236044_MenutypeForeign.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

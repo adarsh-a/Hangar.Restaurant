@@ -128,12 +128,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Controllers\MenuSectionController.cs" />
+    <Compile Include="Controllers\MenuTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Menus.cs" />
     <Compile Include="Models\MenuSection.cs" />
+    <Compile Include="Models\MenusViewModel.cs" />
     <Compile Include="Models\MenuType.cs" />
     <Compile Include="Models\SpecialMenus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -236,15 +239,21 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\MenuSection\" />
+    <Folder Include="Views\MenuType\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Views\PartialView\Menus.cshtml" />
+    <Content Include="Views\Menus\fetchMenus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Hangar.Restaurant.DB\Hangar.Restaurant.DB.csproj">
       <Project>{84dfe997-d662-4f2a-bc44-876ba6b51563}</Project>
       <Name>Hangar.Restaurant.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="Hangar.Restaurant.SQL\Hangar.Restaurant.SQL.sqlproj">
+      <Project>{a2af5b67-d794-488d-8369-22716f8e2d2a}</Project>
+      <Name>Hangar.Restaurant.SQL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
