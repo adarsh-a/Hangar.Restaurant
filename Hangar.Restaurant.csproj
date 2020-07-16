@@ -241,6 +241,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Views\PartialView\Menus.cshtml" />
+    <Content Include="Views\Menus\FetchMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Hangar.Restaurant.DB\Hangar.Restaurant.DB.csproj">

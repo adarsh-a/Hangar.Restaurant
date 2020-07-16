@@ -17,15 +17,15 @@ namespace Hangar.Restaurant.Controllers
         public ActionResult FetchMenu()
         {
             var menusModel = new Menus();
-            var menusData = db.Menus.FirstOrDefault();
-            if (menusData != null)
-            {
-                menusModel.Name = menusData.Name;
-                menusModel.Price = menusData.Price;
-                menusModel.Description = menusData.Description;
-                menusModel.Image = menusData.Image;
-            }
-            return View("~/Views/PartialView/Menus.cshtml", menusModel);
+            var menusData = db.Menus.ToList();
+            //if (menusData != null)
+            //{
+            //    menusModel.Name = menusData.Name;
+            //    menusModel.Price = menusData.Price;
+            //    menusModel.Description = menusData.Description;
+            //    menusModel.Image = menusData.Image;
+            //}
+            return View("~/Views/PartialView/Menus.cshtml", menusData);
         }
     }
 }
