@@ -68,6 +68,18 @@
     <Compile Include="Migrations\202007141852394_tables_changes.designer.cs">
       <DependentUpon>202007141852394_tables_changes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007151234298_tables_changes1.cs" />
+    <Compile Include="Migrations\202007151234298_tables_changes1.designer.cs">
+      <DependentUpon>202007151234298_tables_changes1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007151243259_tables_changes2.cs" />
+    <Compile Include="Migrations\202007151243259_tables_changes2.designer.cs">
+      <DependentUpon>202007151243259_tables_changes2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007161111352_keys.cs" />
+    <Compile Include="Migrations\202007161111352_keys.designer.cs">
+      <DependentUpon>202007161111352_keys.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -84,6 +96,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007141852394_tables_changes.resx">
       <DependentUpon>202007141852394_tables_changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007151234298_tables_changes1.resx">
+      <DependentUpon>202007151234298_tables_changes1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007151243259_tables_changes2.resx">
+      <DependentUpon>202007151243259_tables_changes2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007161111352_keys.resx">
+      <DependentUpon>202007161111352_keys.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
