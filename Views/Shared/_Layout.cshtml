@@ -19,6 +19,30 @@
     <link rel="apple-touch-icon" href="Content/images/apple-touch-icon.png">
 
     @Styles.Render("~/Content/css")
+    <link href="~/Content/css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/baguetteBox.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/classic.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/classic.date.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/classic.time.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/superslides.css" rel="stylesheet" type="text/css" />
+    @*@Styles.Render("~/Content/css/animate.css")
+        @Styles.Render("~/Content/css/baguetteBox.min.css")
+        @Styles.Render("~/Content/css/bootstrap.min.css")
+        @Styles.Render("~/Content/css/classic.css")
+        @Styles.Render("~/Content/css/classic.date.css")
+        @Styles.Render("~/Content/css/classic.time.css")
+        @Styles.Render("~/Content/css/custom.css")
+        @Styles.Render("~/Content/css/font-awesome.min.css")
+        @Styles.Render("~/Content/css/responsive.css")
+        @Styles.Render("~/Content/css/style.css")
+        @Styles.Render("Content/css/superslides.css")
+        @RenderSection("styles", required: false)*@
+
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -68,7 +92,7 @@
     <div id="slides" class="cover-slides">
         <ul class="slides-container">
             <li class="text-left">
-                <img src="images/slider-01.jpg" alt="">
+                <img src="Content/images/slider-01.jpg" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -83,7 +107,7 @@
                 </div>
             </li>
             <li class="text-left">
-                <img src="images/slider-02.jpg" alt="">
+                <img src="Content/images/slider-02.jpg" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -98,7 +122,7 @@
                 </div>
             </li>
             <li class="text-left">
-                <img src="images/slider-03.jpg" alt="">
+                <img src="Content/images/slider-03.jpg" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -133,7 +157,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
-                    <img src="images/about-img.jpg" alt="" class="img-fluid">
+                    <img src="Content/images/about-img.jpg" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -170,33 +194,33 @@
             <div class="tz-gallery">
                 <div class="row">
                     <div class="col-sm-12 col-md-4 col-lg-4">
-                        <a class="lightbox" href="images/gallery-img-01.jpg">
-                            <img class="img-fluid" src="images/gallery-img-01.jpg" alt="Gallery Images">
+                        <a class="lightbox" href="Content/images/gallery-img-01.jpg">
+                            <img class="img-fluid" src="Content/images/gallery-img-01.jpg" alt="Gallery Images">
                         </a>
                     </div>
                     <div class="col-sm-6 col-md-4 col-lg-4">
-                        <a class="lightbox" href="images/gallery-img-02.jpg">
-                            <img class="img-fluid" src="images/gallery-img-02.jpg" alt="Gallery Images">
+                        <a class="lightbox" href="Content/images/gallery-img-02.jpg">
+                            <img class="img-fluid" src="Content/images/gallery-img-02.jpg" alt="Gallery Images">
                         </a>
                     </div>
                     <div class="col-sm-6 col-md-4 col-lg-4">
-                        <a class="lightbox" href="images/gallery-img-03.jpg">
-                            <img class="img-fluid" src="images/gallery-img-03.jpg" alt="Gallery Images">
+                        <a class="lightbox" href="Content/images/gallery-img-03.jpg">
+                            <img class="img-fluid" src="Content/images/gallery-img-03.jpg" alt="Gallery Images">
                         </a>
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4">
-                        <a class="lightbox" href="images/gallery-img-04.jpg">
-                            <img class="img-fluid" src="images/gallery-img-04.jpg" alt="Gallery Images">
+                        <a class="lightbox" href="Content/images/gallery-img-04.jpg">
+                            <img class="img-fluid" src="Content/images/gallery-img-04.jpg" alt="Gallery Images">
                         </a>
                     </div>
                     <div class="col-sm-6 col-md-4 col-lg-4">
-                        <a class="lightbox" href="images/gallery-img-05.jpg">
-                            <img class="img-fluid" src="images/gallery-img-05.jpg" alt="Gallery Images">
+                        <a class="lightbox" href="Content/images/gallery-img-05.jpg">
+                            <img class="img-fluid" src="Content/images/gallery-img-05.jpg" alt="Gallery Images">
                         </a>
                     </div>
                     <div class="col-sm-6 col-md-4 col-lg-4">
-                        <a class="lightbox" href="images/gallery-img-06.jpg">
-                            <img class="img-fluid" src="images/gallery-img-06.jpg" alt="Gallery Images">
+                        <a class="lightbox" href="Content/images/gallery-img-06.jpg">
+                            <img class="img-fluid" src="Content/images/gallery-img-06.jpg" alt="Gallery Images">
                         </a>
                     </div>
                 </div>
@@ -221,7 +245,7 @@
                         <div class="carousel-inner mt-4">
                             <div class="carousel-item text-center active">
                                 <div class="img-box p-1 border rounded-circle m-auto">
-                                    <img class="d-block w-100 rounded-circle" src="images/quotations-button.png" alt="">
+                                    <img class="d-block w-100 rounded-circle" src="Content/images/quotations-button.png" alt="">
                                 </div>
                                 <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Paul Mitchel</strong></h5>
                                 <h6 class="text-dark m-0">Web Developer</h6>
@@ -353,8 +377,24 @@
     <a href="#" id="back-to-top" title="Back to top" style="display: none;"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
 
     <!-- ALL JS FILES -->
+
     @Scripts.Render("~/bundles/script")
     @Scripts.Render("~/bundles/plugin")
+    @Scripts.Render("~/Content/js/baguetteBox.min.js")
+    @Scripts.Render("~/Content/js/bootstrap.min.js")
+    @Scripts.Render("~/Content/js/contact-form-script.js")
+    @Scripts.Render("~/Content/js/custom.js")
+    @Scripts.Render("~/Content/js/form-validator.min.js")
+    @Scripts.Render("~/Content/js/images-loded.min.js")
+    @Scripts.Render("~/Content/js/isotope.min.js")
+    @Scripts.Render("~/Content/js/jquery.mapify.js")
+    @Scripts.Render("Content/js/jquery.superslides.min.js")
+    @Scripts.Render("~/Content/js/jquery-3.2.1.min.js")
+    @Scripts.Render("~/Content/js/legacy.js")
+    @Scripts.Render("~/Content/js/picker.date.js")
+    @Scripts.Render("~/Content/js/picker.js")
+    @Scripts.Render("~/Content/js/picker.time.js")
+    @Scripts.Render("~/Content/js/popper.min.js")
     @RenderSection("scripts", required: false)
 
 </body>

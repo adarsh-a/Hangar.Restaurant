@@ -1,5 +1,6 @@
 ﻿using Hangar.Restaurant.Database;
 using Hangar.Restaurant.Models;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -22,5 +23,6 @@ namespace Hangar.Restaurant.Controllers
             }
             return View("~/Views/PartialView/Menus.cshtml", menuModel);
         }
+        
     }
 }
