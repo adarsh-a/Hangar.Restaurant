@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IRepositoryBase.cs" />
     <Compile Include="Database\Models\MenusEntity.cs" />
     <Compile Include="Database\Models\MenuSectionEntity.cs" />
     <Compile Include="Database\Models\MenuTypeEntity.cs" />
@@ -64,8 +65,13 @@
     <Compile Include="Migrations\202007151236044_MenutypeForeign.designer.cs">
       <DependentUpon>202007151236044_MenutypeForeign.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007161322460_MenutypeKEys.cs" />
+    <Compile Include="Migrations\202007161322460_MenutypeKEys.designer.cs">
+      <DependentUpon>202007161322460_MenutypeKEys.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\SQLRespository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -78,7 +84,11 @@
     <EmbeddedResource Include="Migrations\202007151236044_MenutypeForeign.resx">
       <DependentUpon>202007151236044_MenutypeForeign.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007161322460_MenutypeKEys.resx">
+      <DependentUpon>202007161322460_MenutypeKEys.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

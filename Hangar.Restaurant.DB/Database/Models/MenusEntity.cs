@@ -9,6 +9,8 @@ namespace Hangar.Restaurant.Models
 {
     public class MenusEntity
     {
+        [Key]
+
         public string ID { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
