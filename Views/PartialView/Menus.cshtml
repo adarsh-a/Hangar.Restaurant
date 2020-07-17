@@ -1,11 +1,12 @@
-﻿@model Hangar.Restaurant.Models.MenuSection
+﻿@*@model Hangar.Restaurant.Models.MenuSection*@
+@model IEnumerable<Hangar.Restaurant.DB.Database.Models.MenusEntity>
 <div class="menu-box">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="heading-title text-center">
-                    <h2>@Model.Title</h2>
-                    <p>@Model.Description</p>
+                    @*<h2>@Model.Title</h2>
+                    <p>@Model.Description</p>*@
                 </div>
             </div>
         </div>
@@ -24,7 +25,21 @@
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <div class="row">
-                            <div class="col-lg-4 col-md-6 special-grid drinks">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-lg-4 col-md-6 special-grid drinks">
+                                    <div class="gallery-single fix">
+                                        <img src=" @Html.DisplayFor(modelItem => item.Image)" class="img-fluid" alt="Image">
+                                        <div class="why-text">
+                                            <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
+                                            <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                                            <h5>$@Html.DisplayFor(modelItem => item.Price)</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                            @*<div class="col-lg-4 col-md-6 special-grid drinks">
                                 <div class="gallery-single fix">
                                     <img src="Content/images/img-01.jpg" class="img-fluid" alt="Image">
                                     <div class="why-text">
@@ -121,11 +136,11 @@
                                         <h5> $24.79</h5>
                                     </div>
                                 </div>
-                            </div>
+                            </div>*@
                         </div>
 
                     </div>
-                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    @*<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                         <div class="row">
                             <div class="col-lg-4 col-md-6 special-grid drinks">
                                 <div class="gallery-single fix">
@@ -233,7 +248,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>
