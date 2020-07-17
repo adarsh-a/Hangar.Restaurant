@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repository\RepoMenu.cs" />
+    <Compile Include="Contracts\IRepositoryBase.cs" />
     <Compile Include="Database\Models\MenuEntity.cs" />
     <Compile Include="Database\Models\MenuSectionEntity.cs" />
     <Compile Include="Database\Models\MenuTypeEntity.cs" />
@@ -82,6 +84,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\SQLRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -106,6 +109,9 @@
     <EmbeddedResource Include="Migrations\202007161111352_keys.resx">
       <DependentUpon>202007161111352_keys.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

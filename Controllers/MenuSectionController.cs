@@ -1,4 +1,6 @@
-﻿using Hangar.Restaurant.Database;
+﻿using Hangar.Restaurant.Contracts;
+using Hangar.Restaurant.Database;
+using Hangar.Restaurant.Database.Models;
 using Hangar.Restaurant.Models;
 using System;
 using System.Collections.Generic;
@@ -11,24 +13,32 @@ namespace Hangar.Restaurant.Controllers
     public class MenuSectionController : Controller
     {
         private RestaurantDbContext db = new RestaurantDbContext();
+        private IRepositoryBase<MenuEntity> menuContext;
+        private IRepositoryBase<MenuSectionEntity> sectionContext;
+
+        public  MenuSectionController(IRepositoryBase<MenuEntity> menuCon, IRepositoryBase<MenuSectionEntity> secCon)
+        {
+            menuContext = menuCon;
+            sectionContext = secCon;
+        }
 
         // GET: MenuSection
         public ActionResult FetchMenuSection()
         {
             
 
-            var menuModel = new MenuSection();
-            var menuData = db.MenuSection.FirstOrDefault();
+            MenuSection section = new MenuSection();
+            MenuSectionEntity menuData = sectionContext.Collection().FirstOrDefault();
 
-            var menus = db.Menus.Include(x => x.Type).ToList();
+            List<MenuEntity> menus = menuContext.Collection().Include(ent => ent.Type).ToList();
             List<Menu> menuListModel = new List<Menu>();
 
    
 
             if (menuData != null) 
             {
-                menuModel.Title = menuData.Title;
-                menuModel.Description = menuData.Description;
+                section.Title = menuData.Title;
+                section.Description = menuData.Description;
             
             }
 
@@ -46,7 +56,7 @@ namespace Hangar.Restaurant.Controllers
                 }); ;
             }
 
-            SectionVM model = new SectionVM() { menuList = menuListModel, Title = menuModel.Title, Description = menuModel.Description };
+            SectionVM model = new SectionVM() { menuList = menuListModel, Title = section.Title, Description = section.Description };
 
             return View("~/Views/PartialView/Menus.cshtml", model);
         }
