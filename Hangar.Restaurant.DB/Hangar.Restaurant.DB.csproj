@@ -52,12 +52,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\Models\MenuSectionEntity.cs" />
+    <Compile Include="Database\Models\MenusEntity.cs" />
+    <Compile Include="Database\Models\MenuTypeEntity.cs" />
+    <Compile Include="Database\Models\SpecialMenuEntity.cs" />
     <Compile Include="Database\RestaurantDbContext.cs" />
+    <Compile Include="Migrations\202007170823104_Initial.cs" />
+    <Compile Include="Migrations\202007170823104_Initial.designer.cs">
+      <DependentUpon>202007170823104_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202007170823104_Initial.resx">
+      <DependentUpon>202007170823104_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
