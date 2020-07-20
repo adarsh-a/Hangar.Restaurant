@@ -148,9 +148,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Controllers\MenuSectionController.cs" />
-    <Compile Include="Controllers\MenuTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -259,12 +257,10 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\MenuSection\" />
-    <Folder Include="Views\MenuType\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Views\PartialView\Menus.cshtml" />
-    <Content Include="Views\Menus\fetchMenus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Hangar.Restaurant.DB\Hangar.Restaurant.DB.csproj">
