@@ -15,9 +15,11 @@
             <div class="col-3">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">All</a>
-                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Drinks</a>
-                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Lunch</</a>
-                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Dinner</a>
+                    @foreach (var type in Model.menuTypesList)
+                    {
+                        <a class="nav-link" id="@type.Name-tab" data-toggle="pill" href="#@type.Name" role="tab" aria-controls="@type.Name" aria-selected="false">@type.Name.ToUpper().Substring(0,1)@type.Name.ToLower().Substring(1)</a>
+                    }
+
                 </div>
             </div>
 
@@ -27,83 +29,45 @@
                         <div class="row">
                             @foreach (var item in Model.menulistVM)
                             {
-                            <div class="col-lg-4 col-md-6 special-grid @item.Type.Name">
-                                <div class="gallery-single fix">
-                                    <img src="@item.Image" class="img-fluid" alt="Image">
-                                    <div class="why-text">
-                                        <h4>@item.Name</h4>
-                                        <p>@item.Description</p>
-                                        <h5>RS @item.Price</h5>
+                                <div class="col-lg-4 col-md-6 special-grid @item.Type.Name">
+                                    <div class="gallery-single fix">
+                                        <img src="@item.Image" class="img-fluid" alt="Image">
+                                        <div class="why-text">
+                                            <h4>@item.Name</h4>
+                                            <p>@item.Description</p>
+                                            <h5>RS @item.Price</h5>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             }
                         </div>
 
                     </div>
-                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                        <div class="row">
-                            @foreach (var item in Model.menulistVM)
-                            {
-                                if (item.Type.Name == "drinks")
+                    @foreach (var type in Model.menuTypesList)
+                    {
+                        <div class="tab-pane fade" id="@type.Name" role="tabpanel" aria-labelledby="@type.Name-tab">
+                            <div class="row">
+                                @foreach (var item in Model.menulistVM)
                                 {
-                                    <div class="col-lg-4 col-md-6 special-grid @item.Type.Name">
-                                        <div class="gallery-single fix">
-                                            <img src="@item.Image" class="img-fluid" alt="Image">
-                                            <div class="why-text">
-                                                <h4>@item.Name</h4>
-                                                <p>@item.Description</p>
-                                                <h5>RS @item.Price </h5>
+                                    if (item.Type.Name == type.Name)
+                                    {
+                                        <div class="col-lg-4 col-md-6 special-grid @item.Type.Name">
+                                            <div class="gallery-single fix">
+                                                <img src="@item.Image" class="img-fluid" alt="Image">
+                                                <div class="why-text">
+                                                    <h4>@item.Name</h4>
+                                                    <p>@item.Description</p>
+                                                    <h5>RS @item.Price </h5>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    }
                                 }
-                             }
+                            </div>
                         </div>
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                        <div class="row">
-                            @foreach (var item in Model.menulistVM)
-                            {
-                                if(item.Type.Name == "lunch")
-                                {
-                                    <div class="col-lg-4 col-md-6 special-grid @item.Type.Name">
-                                        <div class="gallery-single fix">
-                                            <img src="@item.Image" class="img-fluid" alt="Image">
-                                            <div class="why-text">
-                                                <h4>@item.Name</h4>
-                                                <p>@item.Description</p>
-                                                <h5>RS @item.Price </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                             }
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                        <div class="row">
-                            @foreach (var item in Model.menulistVM)
-                            {
-                                if (item.Type.Name == "dinner")
-                                {
-                                   <div class="col-lg-4 col-md-6 special-grid @item.Type.Name">
-                                        <div class="gallery-single fix">
-                                            <img src="@item.Image" class="img-fluid" alt="Image">
-                                            <div class="why-text">
-                                                <h4>@item.Name</h4>
-                                                <p>@item.Description</p>
-                                                <h5>RS @item.Price </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            }
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
-
     </div>
 </div>

@@ -69,6 +69,10 @@
     <Compile Include="Migrations\202007161322460_MenutypeKEys.designer.cs">
       <DependentUpon>202007161322460_MenutypeKEys.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007200744450_priceField.cs" />
+    <Compile Include="Migrations\202007200744450_priceField.designer.cs">
+      <DependentUpon>202007200744450_priceField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\SQLRespository.cs" />
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007161322460_MenutypeKEys.resx">
       <DependentUpon>202007161322460_MenutypeKEys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007200744450_priceField.resx">
+      <DependentUpon>202007200744450_priceField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

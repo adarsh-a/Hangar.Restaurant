@@ -14,10 +14,12 @@ namespace Hangar.Restaurant.Controllers
         // GET: MenuSection
         IRepositoryBase<MenusEntity> menuContext;
         IRepositoryBase<MenuSectionEntity> sectionContext;
-        public MenuSectionController(IRepositoryBase<MenusEntity> menuCon, IRepositoryBase<MenuSectionEntity> sectionCon)
+        IRepositoryBase<MenuTypeEntity> typeContext;
+        public MenuSectionController(IRepositoryBase<MenusEntity> menuCon, IRepositoryBase<MenuSectionEntity> sectionCon , IRepositoryBase<MenuTypeEntity> typeCon)
         {
             menuContext = menuCon;
             sectionContext = sectionCon;
+            typeContext = typeCon;
         }
         public ActionResult FetchMenuSection()
         {
@@ -26,6 +28,9 @@ namespace Hangar.Restaurant.Controllers
 
             List <MenusEntity> menusEntities= menuContext.Collection().Include(x => x.Type).ToList();
             List<Menus> menulist = new List<Menus>();
+
+            List<MenuTypeEntity> menuTypeEntities = typeContext.Collection().ToList();
+            List<MenuType> menuTypes = new List<MenuType>();
 
             if (menuData != null)
             {
@@ -47,8 +52,15 @@ namespace Hangar.Restaurant.Controllers
                 });
 
             }
+            foreach(var item in menuTypeEntities)
+            {
+                menuTypes.Add(new MenuType()
+                {
+                    Name = item.Name.ToLower()
+                });
+            }
 
-            var model = new MenusViewModel() { menulistVM = menulist, Description = menuModel.Description, Title = menuModel.Title};
+            var model = new MenusViewModel() { menulistVM = menulist, Description = menuModel.Description, Title = menuModel.Title, menuTypesList= menuTypes};
             return PartialView("~/Views/PartialView/Menus.cshtml", model);
         }
 

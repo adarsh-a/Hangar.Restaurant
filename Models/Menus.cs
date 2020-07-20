@@ -11,7 +11,7 @@ namespace Hangar.Restaurant.Models
     {
         
         public string Name { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         public string Description { get; set; }
         [ForeignKey("MenuTypeID")]
         public MenuType Type { get; set; }
