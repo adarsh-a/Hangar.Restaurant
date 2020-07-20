@@ -58,7 +58,7 @@ namespace Hangar.Restaurant.Controllers
 
             SectionVM model = new SectionVM() { menuList = menuListModel, Title = section.Title, Description = section.Description };
 
-            return View("~/Views/PartialView/Menus.cshtml", model);
+            return PartialView("~/Views/PartialView/Menus.cshtml", model);
         }
 
         
