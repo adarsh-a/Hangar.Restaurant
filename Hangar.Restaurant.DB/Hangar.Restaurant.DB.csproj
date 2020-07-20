@@ -51,6 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\202007200733586_price_float_to_decimal.cs" />
+    <Compile Include="Migrations\202007200733586_price_float_to_decimal.designer.cs">
+      <DependentUpon>202007200733586_price_float_to_decimal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository\RepoMenu.cs" />
     <Compile Include="Contracts\IRepositoryBase.cs" />
     <Compile Include="Database\Models\MenuEntity.cs" />
@@ -108,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007161111352_keys.resx">
       <DependentUpon>202007161111352_keys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007200733586_price_float_to_decimal.resx">
+      <DependentUpon>202007200733586_price_float_to_decimal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -15,11 +15,14 @@ namespace Hangar.Restaurant.Controllers
         private RestaurantDbContext db = new RestaurantDbContext();
         private IRepositoryBase<MenuEntity> menuContext;
         private IRepositoryBase<MenuSectionEntity> sectionContext;
+        private IRepositoryBase<MenuTypeEntity> typeContext;
 
-        public  MenuSectionController(IRepositoryBase<MenuEntity> menuCon, IRepositoryBase<MenuSectionEntity> secCon)
+        public  MenuSectionController(IRepositoryBase<MenuEntity> menuCon, IRepositoryBase<MenuSectionEntity> secCon,
+            IRepositoryBase<MenuTypeEntity> typeCon)
         {
             menuContext = menuCon;
             sectionContext = secCon;
+            typeContext = typeCon;
         }
 
         // GET: MenuSection
@@ -27,12 +30,14 @@ namespace Hangar.Restaurant.Controllers
         {
             
 
-            MenuSection section = new MenuSection();
             MenuSectionEntity menuData = sectionContext.Collection().FirstOrDefault();
+            MenuSection section = new MenuSection();
 
             List<MenuEntity> menus = menuContext.Collection().Include(ent => ent.Type).ToList();
             List<Menu> menuListModel = new List<Menu>();
 
+            List<MenuTypeEntity> menuTypes = typeContext.Collection().ToList();
+            List <MenuType> menuTypeList= new List<MenuType>();
    
 
             if (menuData != null) 
@@ -56,10 +61,26 @@ namespace Hangar.Restaurant.Controllers
                 }); ;
             }
 
-            SectionVM model = new SectionVM() { menuList = menuListModel, Title = section.Title, Description = section.Description };
+            foreach(var type in menuTypes)
+            {
+                menuTypeList.Add(new MenuType
+                {
+                    name = type.name.ToLower()
+                });
+            }
+
+            //define model to display in view
+            SectionVM model = new SectionVM() {
+                menuList = menuListModel,
+                Title = section.Title,
+                Description = section.Description,
+                typeList = menuTypeList
+            };
 
             return PartialView("~/Views/PartialView/Menus.cshtml", model);
         }
+
+        
 
         
     }
