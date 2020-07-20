@@ -8,24 +8,24 @@ namespace Hangar.Restaurant
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {  
-            bundles.Add(new ScriptBundle("~/bundles/script").Include(   
-                      "~/Content/js/Scripts/custom.js",                      
-                       "~/Content/js/Scripts/jquery-3.2.1.min.js",                       
-                      "~/Content/js/Scripts/popper.min.js",
-                      "~/Content/js/Scripts/bootstrap.min.js"));
+          
 
-            bundles.Add(new ScriptBundle("~/bundles/plugin").Include(
-                      "~/Content/js/Scripts/baguetteBox.min.js",                      
-                      "~/Content/js/Scripts/contact-form-script.js",                     
-                      "~/Content/js/Scripts/form-validator.min.js",
-                       "~/Content/js/Scripts/images-loded.min.js",
-                       "~/Content/js/Scripts/isotope.min.js",                      
-                       "~/Content/js/Scripts/jquery.mapify.js",
-                       "~/Content/js/Scripts/jquery.superslides.min.js",
-                       "~/Content/js/Scripts/legacy.js",
-                      "~/Content/js/Scripts/picker.date.js",
-                       "~/Content/js/Scripts/picker.js",
-                      "~/Content/js/Scripts/picker.time.js"
+            bundles.Add(new ScriptBundle("~/Content/js").Include(
+                      "~/Content/js/baguetteBox.min.js",                      
+                      "~/Content/js/contact-form-script.js",                     
+                      "~/Content/js/form-validator.min.js",
+                       "~/Content/js/images-loded.min.js",
+                       "~/Content/js/isotope.min.js",                      
+                       "~/Content/js/jquery.mapify.js",
+                       "~/Content/js/jquery.superslides.min.js",
+                       "~/Content/js/legacy.js",
+                      "~/Content/js/picker.date.js",
+                       "~/Content/js/picker.js",
+                      "~/Content/js/picker.time.js",
+                        "~/Content/js/custom.js",
+                       "~/Content/js/jquery-3.2.1.min.js",
+                      "~/Content/js/popper.min.js",
+                      "~/Content/js/bootstrap.min.js"
                      ));
 
 

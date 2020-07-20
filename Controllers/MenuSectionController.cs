@@ -42,13 +42,14 @@ namespace Hangar.Restaurant.Controllers
                     Description = item.Description,
                     Image = item.Image,
                     Price = item.Price,
-                    Type = new MenuType() { Name = item.Type.Name }
+                    Type = new MenuType() { Name = item.Type.Name.ToLower() }
+
                 });
 
             }
 
             var model = new MenusViewModel() { menulistVM = menulist, Description = menuModel.Description, Title = menuModel.Title};
-            return View("~/Views/PartialView/Menus.cshtml", model);
+            return PartialView("~/Views/PartialView/Menus.cshtml", model);
         }
 
     }
