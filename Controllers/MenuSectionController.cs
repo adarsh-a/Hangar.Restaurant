@@ -51,7 +51,7 @@ namespace Hangar.Restaurant.Controllers
                     Description = item.Description,
                     Price = item.Price,
                     Image = item.Image,
-                    Type = new MenuType() { name = item.Type.name}
+                    Type = new MenuType() { name = item.Type.name.ToLower()}
 
                 }); ;
             }
