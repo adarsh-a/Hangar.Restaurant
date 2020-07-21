@@ -54,6 +54,7 @@
     <Compile Include="Database\Models\MenuSectionEntity.cs" />
     <Compile Include="Database\Models\MenusEntity.cs" />
     <Compile Include="Database\Models\MenuTypeEntity.cs" />
+    <Compile Include="Database\Models\SliderEntity.cs" />
     <Compile Include="Database\Models\SpecialMenusEntity.cs" />
     <Compile Include="Database\RestaurantDbContext.cs" />
     <Compile Include="Migrations\202007201111460_InitialCreate.cs" />
@@ -63,6 +64,14 @@
     <Compile Include="Migrations\202007210643419_NewChanges.cs" />
     <Compile Include="Migrations\202007210643419_NewChanges.designer.cs">
       <DependentUpon>202007210643419_NewChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007210910033_Slider.cs" />
+    <Compile Include="Migrations\202007210910033_Slider.designer.cs">
+      <DependentUpon>202007210910033_Slider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007210947160_Modification.cs" />
+    <Compile Include="Migrations\202007210947160_Modification.designer.cs">
+      <DependentUpon>202007210947160_Modification.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,6 +88,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007210643419_NewChanges.resx">
       <DependentUpon>202007210643419_NewChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007210910033_Slider.resx">
+      <DependentUpon>202007210910033_Slider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007210947160_Modification.resx">
+      <DependentUpon>202007210947160_Modification.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
