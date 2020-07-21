@@ -14,6 +14,7 @@ namespace Hangar.Restaurant.Database
         public DbSet<MenusEntity> Menus { get; set; }
         public DbSet<MenuTypeEntity> MenuType { get; set; }
         public DbSet<SpecialMenuEntity> SpecialMenu { get; set; }
+        public DbSet<SliderEntity> Sliders { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

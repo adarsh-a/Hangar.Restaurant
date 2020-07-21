@@ -15,7 +15,7 @@ namespace Hangar.Restaurant.Models
         public string Image { get; set; }
         [ForeignKey("MenuTypeId")]
         public MenuType Type { get; set; }
-        public MenuTypeEntity TypeId { get; set; }
+        public string MenuTypeId { get; set; }
 
     }
 }

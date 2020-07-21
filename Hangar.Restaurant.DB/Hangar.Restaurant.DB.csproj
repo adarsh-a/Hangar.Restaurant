@@ -54,14 +54,37 @@
     <Compile Include="Database\Models\MenuSectionEntity.cs" />
     <Compile Include="Database\Models\MenusEntity.cs" />
     <Compile Include="Database\Models\MenuTypeEntity.cs" />
+    <Compile Include="Database\Models\SliderEntity.cs" />
     <Compile Include="Database\Models\SpecialMenuEntity.cs" />
     <Compile Include="Database\RestaurantDbContext.cs" />
     <Compile Include="Migrations\202007170823104_Initial.cs" />
     <Compile Include="Migrations\202007170823104_Initial.designer.cs">
       <DependentUpon>202007170823104_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007211042234_MenusUpdated.cs" />
+    <Compile Include="Migrations\202007211042234_MenusUpdated.designer.cs">
+      <DependentUpon>202007211042234_MenusUpdated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007211136079_Slider.cs" />
+    <Compile Include="Migrations\202007211136079_Slider.designer.cs">
+      <DependentUpon>202007211136079_Slider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007211137541_Slide.cs" />
+    <Compile Include="Migrations\202007211137541_Slide.designer.cs">
+      <DependentUpon>202007211137541_Slide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007211143042_Sliders.cs" />
+    <Compile Include="Migrations\202007211143042_Sliders.designer.cs">
+      <DependentUpon>202007211143042_Sliders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007211240306_MenuType.cs" />
+    <Compile Include="Migrations\202007211240306_MenuType.designer.cs">
+      <DependentUpon>202007211240306_MenuType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repo\IRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -70,6 +93,21 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202007170823104_Initial.resx">
       <DependentUpon>202007170823104_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007211042234_MenusUpdated.resx">
+      <DependentUpon>202007211042234_MenusUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007211136079_Slider.resx">
+      <DependentUpon>202007211136079_Slider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007211137541_Slide.resx">
+      <DependentUpon>202007211137541_Slide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007211143042_Sliders.resx">
+      <DependentUpon>202007211143042_Sliders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007211240306_MenuType.resx">
+      <DependentUpon>202007211240306_MenuType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
