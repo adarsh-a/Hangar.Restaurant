@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IRepositoryBase.cs" />
+    <Compile Include="Database\Models\BannerSectionEntity.cs" />
     <Compile Include="Database\Models\MenusEntity.cs" />
     <Compile Include="Database\Models\MenuSectionEntity.cs" />
     <Compile Include="Database\Models\MenuTypeEntity.cs" />
@@ -73,6 +74,10 @@
     <Compile Include="Migrations\202007200744450_priceField.designer.cs">
       <DependentUpon>202007200744450_priceField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007201234175_tblBanner.cs" />
+    <Compile Include="Migrations\202007201234175_tblBanner.designer.cs">
+      <DependentUpon>202007201234175_tblBanner.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\SQLRespository.cs" />
@@ -93,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007200744450_priceField.resx">
       <DependentUpon>202007200744450_priceField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007201234175_tblBanner.resx">
+      <DependentUpon>202007201234175_tblBanner.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

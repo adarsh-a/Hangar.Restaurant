@@ -1,6 +1,7 @@
 using Hangar.Restaurant.Contracts;
 using Hangar.Restaurant.Database.Models;
 using Hangar.Restaurant.DB;
+using Hangar.Restaurant.DB.Database.Models;
 using Hangar.Restaurant.Models;
 using System;
 
@@ -50,6 +51,7 @@ namespace Hangar.Restaurant
             container.RegisterType<IRepositoryBase<MenuSectionEntity>, SQLRespository<MenuSectionEntity>>();
             container.RegisterType<IRepositoryBase<MenuTypeEntity>, SQLRespository<MenuTypeEntity>>();
             container.RegisterType<IRepositoryBase<SpecialMenusEntity>, SQLRespository<SpecialMenusEntity>>();
+            container.RegisterType<IRepositoryBase<BannerSectionEntity>, SQLRespository<BannerSectionEntity>>();
 
 
         }
