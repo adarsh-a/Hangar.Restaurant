@@ -32,7 +32,7 @@ namespace Hangar.Restaurant.Controllers
                     links = banner.links
                 });
             }
-            return PartialView(slideshowsmodel);
+            return PartialView("~/Views/PartialView/bannerslides.cshtml", slideshowsmodel);
             //return PartialView("~/Views/PartialView/bannerslides.cshtml", slide);
         }
     }

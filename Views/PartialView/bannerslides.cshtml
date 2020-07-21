@@ -1,7 +1,7 @@
-﻿@model Hangar.Restaurant.Models.MultipleData
+﻿@model IEnumerable<Hangar.Restaurant.Models.SlideshowModel>
 <div id="slides" class="cover-slides">
     <ul class="slides-container">
-        @foreach (var banner in Model.slides)
+        @foreach (var banner in Model)
         {
             <li class="text-left">
                 <img src="@banner.image" alt="">

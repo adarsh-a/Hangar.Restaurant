@@ -34,7 +34,7 @@ namespace Hangar.Restaurant.Controllers
             
             MenuSectionEntity menuData = sectionContext.Collection().FirstOrDefault();
 
-            List<MenuEntity> menus = menuContext.Collection().Include(ent => ent.Type).ToList();
+            List<MenuEntity> menus = menuContext.Collection().Include(ent => ent.Type).OrderBy(o => o.Price).ToList();
             List<MenuTypeEntity> menuTypes = typesContext.Collection().ToList();
             
 
@@ -57,6 +57,7 @@ namespace Hangar.Restaurant.Controllers
                     Image = item.Image,
                     Type = new MenuType() { name = item.Type.name}
                 });
+                
             }
             foreach (var type in menuTypes)
             {
@@ -76,7 +77,6 @@ namespace Hangar.Restaurant.Controllers
             };
             //return PartialView(model);
             return PartialView("~/Views/PartialView/Menus.cshtml", model);
-        }
-        
+        }        
     }
 }
