@@ -37,10 +37,12 @@ namespace Hangar.Restaurant.Controllers
             MenuType menuType = new MenuType();
             SpecialMenusEntity smData = specialMenuContext.Collection().FirstOrDefault();
 
-            List<MenusEntity> menuList = menuContext.Collection().Include(ent => ent.TypeId).ToList();
+            List<MenusEntity> menuList = menuContext.Collection().Include(ent => ent.Type).ToList();
+            //List<SpecialMenusEntity> specialList = specialMenuContext.Collection().Include(ent => ent.Id).ToList();
             List<MenuTypeEntity> menuTypeList = menuTypeContext.Collection().ToList();
             List<Menus> MenusModel = new List<Menus>();
             List<MenuType> MenuTypeModel = new List<MenuType>();
+            List<SpecialMenus> smenuModel = new List<SpecialMenus>();
 
             if (smData != null)
             {
@@ -56,6 +58,7 @@ namespace Hangar.Restaurant.Controllers
                     Description = item.Description,
                     Price = item.Price,
                     Image = item.Image,
+                    Typex = new MenuType() { Name = item.Type.Name}
                     
                 });
             }

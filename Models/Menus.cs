@@ -13,7 +13,7 @@ namespace Hangar.Restaurant.Models
         public string Description { get; set; }
         public string Image { get; set; }
         [ForeignKey("MenuTypeId")]
-        public MenuType Type {get;set;}
+        public MenuType Typex {get;set;}
         public string MenuTypeId { get; set; }
         
     }
