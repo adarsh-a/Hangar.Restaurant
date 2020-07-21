@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Hangar.Restaurant.Models.Banner>
+
+<div id="slides" class="cover-slides">
+    <ul class="slides-container">
+        @foreach (var banner in Model)
+        {
+        <li class="text-left">
+            <img src=@banner.Image alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>@Html.Raw(banner.Name)</strong></h1>
+                        <p class="m-b-40">
+                            @Html.Raw(banner.Description)
+                        </p>
+                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href=@banner.Link>@banner.ButtonName</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        }
+    </ul>
+    <div class="slides-navigation">
+        <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+    </div>
+</div>

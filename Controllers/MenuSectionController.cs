@@ -12,7 +12,6 @@ namespace Hangar.Restaurant.Controllers
 {
     public class MenuSectionController : Controller
     {
-        private RestaurantDbContext db = new RestaurantDbContext();
         private IRepositoryBase<MenuEntity> menuContext;
         private IRepositoryBase<MenuSectionEntity> sectionContext;
         private IRepositoryBase<MenuTypeEntity> typeContext;
@@ -26,7 +25,7 @@ namespace Hangar.Restaurant.Controllers
         }
 
         // GET: MenuSection
-        public ActionResult FetchMenuSection()
+        public PartialViewResult FetchMenuSection()
         {
             
 

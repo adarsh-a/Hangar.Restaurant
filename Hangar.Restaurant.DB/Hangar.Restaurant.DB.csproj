@@ -51,11 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\Models\BannerEntity.cs" />
     <Compile Include="Migrations\202007200733586_price_float_to_decimal.cs" />
     <Compile Include="Migrations\202007200733586_price_float_to_decimal.designer.cs">
       <DependentUpon>202007200733586_price_float_to_decimal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Repository\RepoMenu.cs" />
     <Compile Include="Contracts\IRepositoryBase.cs" />
     <Compile Include="Database\Models\MenuEntity.cs" />
     <Compile Include="Database\Models\MenuSectionEntity.cs" />
@@ -86,6 +86,10 @@
     <Compile Include="Migrations\202007161111352_keys.designer.cs">
       <DependentUpon>202007161111352_keys.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007201226273_new_table_banner.cs" />
+    <Compile Include="Migrations\202007201226273_new_table_banner.designer.cs">
+      <DependentUpon>202007201226273_new_table_banner.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\SQLRepository.cs" />
@@ -115,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007200733586_price_float_to_decimal.resx">
       <DependentUpon>202007200733586_price_float_to_decimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007201226273_new_table_banner.resx">
+      <DependentUpon>202007201226273_new_table_banner.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
