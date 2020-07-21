@@ -82,6 +82,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\Models\SlideshowEntity.cs" />
+    <Compile Include="Migrations\202007201255433_addingSlidsTable.cs" />
+    <Compile Include="Migrations\202007201255433_addingSlidsTable.designer.cs">
+      <DependentUpon>202007201255433_addingSlidsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository\RepoMenu.cs" />
     <Compile Include="Contracts\IRepositoryBase.cs" />
     <Compile Include="Database\Models\MenuEntity.cs" />
@@ -139,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007161111352_keys.resx">
       <DependentUpon>202007161111352_keys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007201255433_addingSlidsTable.resx">
+      <DependentUpon>202007201255433_addingSlidsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using Hangar.Restaurant.Database.Models;
+using Hangar.Restaurant.DB.Database.Models;
 using Hangar.Restaurant.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -14,6 +15,8 @@ namespace Hangar.Restaurant.Database
         public DbSet<MenuTypeEntity> MenuTypes { get; set; }
         public DbSet<MenuEntity> Menus { get; set; }
         public DbSet<SpecialMenuEntity> SpecialMenus { get; set; }
+        public DbSet<SlideshowEntity> Slideshows { get; set; }
+
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
