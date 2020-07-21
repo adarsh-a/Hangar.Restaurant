@@ -35,6 +35,7 @@ namespace Hangar.Restaurant.Controllers
                         Description = banner.Description,
                         Link = banner.Link,
                         Image = banner.Image,
+                        LinkName=banner.LinkName
 
                     });
                 }
