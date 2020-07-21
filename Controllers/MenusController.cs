@@ -1,10 +1,16 @@
 ﻿using Hangar.Restaurant.Database;
+using Hangar.Restaurant.DB.Database.Models;
+using Hangar.Restaurant.DB.Repository;
 using Hangar.Restaurant.Models;
+using Hangar.Restaurant.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.EnterpriseServices;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace Hangar.Restaurant.Controllers
 {
@@ -13,19 +19,62 @@ namespace Hangar.Restaurant.Controllers
         // GET: Menus
         private RestaurantDbContext db = new RestaurantDbContext();
 
-        // GET: MenuSection
+        private IRepository<MenusEntity> menuContext;
+        private IRepository<MenuTypeEntity> menuTypeContext;
+        private IRepository<SpecialMenusEntity> specialMenuContext;
+
+        public MenusController(IRepository<MenusEntity> mContext, IRepository<MenuTypeEntity> mtContext, IRepository<SpecialMenusEntity> smContext)
+        {
+            menuContext = mContext;
+            menuTypeContext = mtContext;
+            specialMenuContext = smContext;
+        }
+
+        // GET: Menus
         public ActionResult FetchMenu()
         {
-            var menusModel = new Menus();
-            var menusData = db.Menus.ToList();
-            //if (menusData != null)
-            //{
-            //    menusModel.Name = menusData.Name;
-            //    menusModel.Price = menusData.Price;
-            //    menusModel.Description = menusData.Description;
-            //    menusModel.Image = menusData.Image;
-            //}
-            return View("~/Views/PartialView/Menus.cshtml", menusData);
+            SpecialMenus special = new SpecialMenus();
+            MenuType menuType = new MenuType();
+            SpecialMenusEntity smData = specialMenuContext.Collection().FirstOrDefault();
+
+            List<MenusEntity> menuList = menuContext.Collection().Include(ent => ent.TypeId).ToList();
+            List<MenuTypeEntity> menuTypeList = menuTypeContext.Collection().ToList();
+            List<Menus> MenusModel = new List<Menus>();
+            List<MenuType> MenuTypeModel = new List<MenuType>();
+
+            if (smData != null)
+            {
+                special.Title = smData.Title;
+                special.Description = smData.Description;
+            }
+
+            foreach (var item in menuList)
+            {
+                MenusModel.Add(new Menus()
+                {
+                    Name = item.Name,
+                    Description = item.Description,
+                    Price = item.Price,
+                    Image = item.Image,
+                    
+                });
+            }
+            foreach (var type in menuTypeList)
+            {
+                MenuTypeModel.Add(new MenuType()
+                {
+                    Name = type.Name
+                });
+            }
+            MenuViewModel model = new MenuViewModel()
+            {
+                menus = MenusModel,
+                menuType = MenuTypeModel,
+                name = menuType.Name,
+                Title = special.Title,
+                Description = special.Description
+            };
+            return PartialView("~/Views/PartialView/Menus.cshtml", model);
         }
     }
 }
