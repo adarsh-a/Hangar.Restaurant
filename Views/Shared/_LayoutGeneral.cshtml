@@ -231,6 +231,68 @@
     @Scripts.Render("~/Content/js")
     @RenderSection("scripts", required: false)
 
-    
+    <!--Menu show more-->
+    <script>
+        $(document).ready(function () {
+            //hide everything
+            $(".all").hide();
+            $(".drinks").hide();
+            $(".lunch").hide();
+            $(".dinner").hide();
+            $("#loadMore").hide();
+            $("#drinks #loadMore").hide();
+            $("#lunch #loadMore").hide();
+            $("#dinner #loadMore").hide();
+
+            //shows only 9 from each
+            $(".all").slice(0, 3).show();
+            $(".drinks").slice(0, 9).show();
+            $(".lunch").slice(0, 9).show();
+            $(".dinner").slice(0, 9).show();
+
+            //shows button load more on start if required
+            if ($(".all").length > 3) {
+                $("#loadMore").show();
+            }
+            if ($(".drinks").length > 9) {
+                $("#drinks #loadMore").show();
+            }
+            if ($(".lunch").length > 9) {
+                $("#lunch #loadMore").show();
+            }
+            if ($(".dinner").length > 9) {
+                $("#dinner #loadMore").show();
+            }
+        
+            $("#loadMore").on('click', function (e) {
+                e.preventDefault();
+                $(".all:hidden").slice(0,3).slideDown();
+                if ($(".all:hidden").length == 0) {
+                    $("#loadMore").fadeOut('slow');
+                }
+            });
+            $("#drinks #loadMore").on('click', function (e) {
+                e.preventDefault();
+                $(".drinks:hidden").slice(0,9).slideDown();
+                if ($(".drinks:hidden").length == 0) {
+                    $("#drinks #loadMore").fadeOut('slow');
+                }
+            });
+            $("#lunch #loadMore").on('click', function (e) {
+                e.preventDefault();
+                $(".lunch:hidden").slice(0,9).slideDown();
+                if ($(".lunch:hidden").length == 0) {
+                    $("#lunch #loadMore").fadeOut('slow');
+                }
+            });
+            $("#dinner #loadMore").on('click', function (e) {
+                e.preventDefault();
+                $(".dinner:hidden").slice(0,9).slideDown();
+                if ($(".dinner:hidden").length == 0) {
+                    $("#dinner #loadMore").fadeOut('slow');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
