@@ -1,0 +1,79 @@
+﻿@model Hangar.Restaurant.Models.SectionVM
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+}
+
+<div class="menu-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="heading-title text-center">
+                    <h2>@Model.Title</h2>
+                    <p>@Model.Description</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row inner-menu-box">
+            <div class="col-3">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">All</a>
+                    @foreach (var type in Model.typeList)
+                    {
+                        <a class="nav-link" id="@type.name-tab" data-toggle="pill" href="#@type.name" role="tab" aria-controls="@type.name" aria-selected="false">
+                            <!-- Display first char Uppercase and remaining in lowercase -->
+                            @type.name.Substring(0, 1).ToUpper()@type.name.Substring(1)
+                        </a>
+                    }
+                </div>
+            </div>
+
+            <div class="col-9">
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <div class="row">
+                            @foreach (var item in Model.menuList)
+                            {
+                                <div class="col-lg-4 col-md-6 special-grid all">
+                                    <div class="gallery-single fix">
+                                        <img src=@item.Image class="img-fluid" alt="Image">
+                                        <div class="why-text">
+                                            <h4>@item.Name</h4>
+                                            <p>@item.Description</p>
+                                            <h5> $ @item.Price </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    @foreach (var type in Model.typeList)
+                    {
+                <div class="tab-pane fade" id="@type.name" role="tabpanel" aria-labelledby="@type.name-tab">
+                    <div class="row">
+                        @foreach (var item in Model.menuList)
+                        {
+                            if (item.Type.name == type.name)
+                            {
+                                <div class="col-lg-4 col-md-6 special-grid @item.Type.name">
+                                    <div class="gallery-single fix">
+                                        <img src=@item.Image class="img-fluid" alt="Image">
+                                        <div class="why-text">
+                                            <h4>@item.Name</h4>
+                                            <p>@item.Description</p>
+                                            <h5> $ @item.Price </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
