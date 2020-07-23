@@ -29,23 +29,26 @@
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                        <div class="row">
+                        <div class="row rowToSort">
                             @foreach (var item in Model.menulistVM)
                             {
-                                <div class="col-lg-4 col-md-6 special-grid all">
-                                    <div class="gallery-single fix">
+                                <div class="col-lg-4 col-md-6 special-grid all allSort">
+                                    <div class="gallery-single fix ">
                                         <img src="@item.Image" class="img-fluid" alt="Image">
-                                        <div class="why-text">
-                                            <h4>@item.Name</h4>
-                                            <p>@item.Description</p>
+                                        <div class="why-text ">
+                                            <h4 class="name">@item.Name</h4>
+                                            <p class="price">@item.Description</p>
                                             <h5>RS @item.Price</h5>
                                         </div>
                                     </div>
                                 </div>
                             }
-                            <div id="btnLoadMore">
-                                <button type="button" class="btn btn-lg btn-circle btn-outline-new-white">Load More</button>
-                            </div>
+                        </div>
+                        <div id="btnLoadMore">
+                            <button type="button" class="btn btn-lg btn-circle btn-outline-new-white">Load More</button>
+                        </div>
+                        <div id="sorting">
+                            <button type="button" class="btn btn-lg btn-circle btn-outline-new-white" onclick=sorting()>sort</button>
                         </div>
                     </div>
                     @foreach (var type in Model.menuTypesList)

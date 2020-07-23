@@ -314,7 +314,30 @@
                 }
             });
         });
+
+        function sorting() {
+            var elements = document.getElementsByClassName("allSort");
+            //var el=elements.getElementsByClassName("name")[1];
+           // var toSortName = document.getElementsByClassName("name");
+            //var toSortPrice = document.getElementsByClassName("price");
+
+            elements = Array.prototype.slice.call(elements, 0);
+            
+            elements.sort(function (a, b) {
+                var aTemp = a.getElementsByClassName("name")[0].innerHTML.toLowerCase(); // ading +a for integer
+                var bTemp = b.getElementsByClassName("name")[0].innerHTML.toLowerCase();
+
+                return (aTemp > bTemp ? 1 : -1);
+            });
+            var parent = document.getElementsByClassName("rowToSort")[0];
+            parent.innerHTML = "";
+
+            for (i = 0; i < elements.length; i++) {
+                parent.appendChild(elements[i]);
+            }
+        }
     </script>
+   
 
 </body>
 </html>
