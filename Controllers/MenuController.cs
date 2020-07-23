@@ -1,33 +1,35 @@
 ﻿using Hangar.Restaurant.Contracts;
-using Hangar.Restaurant.Database;
 using Hangar.Restaurant.Database.Models;
 using Hangar.Restaurant.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Hangar.Restaurant.Controllers
 {
-    public class MenuSectionController : Controller
+    public class MenuController : Controller
     {
-        // GET: MenuSection
+        // GET: Menu
         IRepositoryBase<MenusEntity> menuContext;
         IRepositoryBase<MenuSectionEntity> sectionContext;
         IRepositoryBase<MenuTypeEntity> typeContext;
-        public MenuSectionController(IRepositoryBase<MenusEntity> menuCon, IRepositoryBase<MenuSectionEntity> sectionCon , IRepositoryBase<MenuTypeEntity> typeCon)
+        public MenuController(IRepositoryBase<MenusEntity> menuCon, IRepositoryBase<MenuSectionEntity> sectionCon, IRepositoryBase<MenuTypeEntity> typeCon)
         {
             menuContext = menuCon;
             sectionContext = sectionCon;
             typeContext = typeCon;
         }
-        public ActionResult FetchMenuSection()
+        public ActionResult Index()
         {
+
             var menuModel = new MenuSection();
             var menuData = sectionContext.Collection().FirstOrDefault();
 
-            List <MenusEntity> menusEntities= menuContext.Collection().Include(x => x.Type).ToList();
+            List<MenusEntity> menusEntities = menuContext.Collection().Include(x => x.Type).OrderBy(p=>p.Price).ToList();
+            
             List<Menus> menulist = new List<Menus>();
 
             List<MenuTypeEntity> menuTypeEntities = typeContext.Collection().ToList();
@@ -53,7 +55,7 @@ namespace Hangar.Restaurant.Controllers
                 });
 
             }
-            foreach(var item in menuTypeEntities)
+            foreach (var item in menuTypeEntities)
             {
                 menuTypes.Add(new MenuType()
                 {
@@ -61,8 +63,9 @@ namespace Hangar.Restaurant.Controllers
                 });
             }
 
-            var model = new MenusViewModel() { menulistVM = menulist, Description = menuModel.Description, Title = menuModel.Title, menuTypesList= menuTypes};
-            return PartialView("~/Views/PartialView/Menus.cshtml", model);
+            var model = new MenusViewModel() { menulistVM = menulist, Description = menuModel.Description, Title = menuModel.Title, menuTypesList = menuTypes };
+            return PartialView("~/Views/Menu/Index.cshtml", model);
         }
     }
+    
 }

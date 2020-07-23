@@ -1,4 +1,7 @@
 ﻿@model Hangar.Restaurant.Models.MenusViewModel
+@{ 
+    Layout = "~/Views/Shared/Menu_Layout.cshtml";
+}
 
 <div class="menu-box">
     <div class="container">
@@ -17,7 +20,7 @@
                     <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">All</a>
                     @foreach (var type in Model.menuTypesList)
                     {
-                        <a class="nav-link" id="@type.Name-tab" data-toggle="pill" href="#@type.Name" role="tab" aria-controls="@type.Name" aria-selected="false">@type.Name.ToUpper().Substring(0,1)@type.Name.ToLower().Substring(1)</a>
+                        <a class="nav-link" id="@type.Name-tab" data-toggle="pill" href="#@type.Name" role="tab" aria-controls="@type.Name" aria-selected="false">@type.Name.ToUpper().Substring(0, 1)@type.Name.ToLower().Substring(1)</a>
                     }
 
                 </div>
@@ -29,7 +32,7 @@
                         <div class="row">
                             @foreach (var item in Model.menulistVM)
                             {
-                                <div class="col-lg-4 col-md-6 special-grid @item.Type.Name">
+                                <div class="col-lg-4 col-md-6 special-grid all">
                                     <div class="gallery-single fix">
                                         <img src="@item.Image" class="img-fluid" alt="Image">
                                         <div class="why-text">
@@ -40,8 +43,10 @@
                                     </div>
                                 </div>
                             }
+                            <div id="btnLoadMore">
+                                <button type="button" class="btn btn-lg btn-circle btn-outline-new-white">Load More</button>
+                            </div>
                         </div>
-
                     </div>
                     @foreach (var type in Model.menuTypesList)
                     {
@@ -63,6 +68,9 @@
                                         </div>
                                     }
                                 }
+                                <div id="btn-@type.Name">
+                                    <button type="button" class="btn btn-lg btn-circle btn-outline-new-white">Load More</button>
+                                </div>
                             </div>
                         </div>
                     }

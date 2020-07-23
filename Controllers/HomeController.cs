@@ -26,5 +26,6 @@ namespace Hangar.Restaurant.Controllers
 
             return View();
         }
+       
     }
 }

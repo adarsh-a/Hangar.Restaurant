@@ -7,6 +7,7 @@ namespace Hangar.Restaurant.Models
 {
     public class MenuType
     {
+        public string ID { get; set; }
         public string Name { get; set; }
       
     }
