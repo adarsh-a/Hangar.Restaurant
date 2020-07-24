@@ -148,8 +148,8 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenuPageController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
-    <Compile Include="Controllers\MenuSectionController.cs" />
     <Compile Include="Controllers\SliderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -242,6 +242,8 @@
     <Content Include="Content\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Views\PartialView\MenuPage.cshtml" />
+    <None Include="Views\Shared\LayoutMenu.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -259,7 +261,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\MenuSection\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -267,6 +268,7 @@
     <Content Include="Views\Menus\FetchMenu.cshtml" />
     <Content Include="Views\Menus\FetchMenuType.cshtml" />
     <Content Include="Views\Slider\slideShow.cshtml" />
+    <Content Include="Views\MenuPage\MenuLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Hangar.Restaurant.DB\Hangar.Restaurant.DB.csproj">
