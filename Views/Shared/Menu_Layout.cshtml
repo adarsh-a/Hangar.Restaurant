@@ -248,7 +248,6 @@
         $(document).ready(function () {
             $(".all").hide();
             $(".all").slice(0, 9).show();
-            console.log($(".all").length);
             if ($(".all").length>9) {
                 $("#btnLoadMore").show();
             }
@@ -265,7 +264,6 @@
             //lunch
             $(".lunch").hide();
             $(".lunch").slice(0, 9).show();
-            console.log($(".lunch").length);
             if ($(".lunch").length > 9 ) {
                 $("#btn-lunch").show();
             }
@@ -282,7 +280,6 @@
             //dinner
             $(".dinner").hide();
             $(".dinner").slice(0, 9).show();
-            console.log($(".dinner").length);
             if ($(".dinner").length > 9) {
                 $("#btn-dinner").show();
             }
@@ -299,7 +296,6 @@
             //drink
             $(".drinks").hide();
             $(".drinks").slice(0, 9).show();
-            console.log($(".drinks").length);
             if ($(".drinks").length > 9) {
                 $("#btn-drinks").show();
             }
@@ -315,26 +311,36 @@
             });
         });
 
-        function sorting() {
+        function sorting(sortName) {
+            console.log(sortName);
             var elements = document.getElementsByClassName("allSort");
-            //var el=elements.getElementsByClassName("name")[1];
-           // var toSortName = document.getElementsByClassName("name");
-            //var toSortPrice = document.getElementsByClassName("price");
-
             elements = Array.prototype.slice.call(elements, 0);
-            
-            elements.sort(function (a, b) {
-                var aTemp = a.getElementsByClassName("name")[0].innerHTML.toLowerCase(); // ading +a for integer
-                var bTemp = b.getElementsByClassName("name")[0].innerHTML.toLowerCase();
 
-                return (aTemp > bTemp ? 1 : -1);
-            });
+            if (sortName == "nameAsc") {
+                elements.sort(function (a, b) {
+                    var aTemp = a.getElementsByClassName("name")[0].innerHTML.toLowerCase(); // ading +a for integer
+                    var bTemp = b.getElementsByClassName("name")[0].innerHTML.toLowerCase();
+
+                    return (aTemp > bTemp ? 1 : -1);
+                });
+            }
+            else if (sortName == "priceDsc") {
+                elements.sort(function (a, b) {
+                    var aTemp = a.getElementsByClassName("price")[0].innerHTML.toLowerCase().split("rs")[1]; // ading +a for integer
+                    var bTemp = b.getElementsByClassName("price")[0].innerHTML.toLowerCase().split("rs")[1];
+
+                    return (bTemp - aTemp);
+                });
+            }
+            
             var parent = document.getElementsByClassName("rowToSort")[0];
             parent.innerHTML = "";
 
             for (i = 0; i < elements.length; i++) {
                 parent.appendChild(elements[i]);
             }
+           
+            
         }
     </script>
    
