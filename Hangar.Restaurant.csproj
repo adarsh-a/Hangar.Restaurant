@@ -148,6 +148,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenuPageController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Controllers\MenuSectionController.cs" />
     <Compile Include="Controllers\SliderController.cs" />
@@ -267,6 +268,9 @@
     <Content Include="Views\Menus\FetchMenu.cshtml" />
     <Content Include="Views\Menus\FetchMenuType.cshtml" />
     <Content Include="Views\Slider\slideShow.cshtml" />
+    <Content Include="Views\Shared\Menu.cshtml" />
+    <Content Include="Views\MenuPage\MenusPage.cshtml" />
+    <Content Include="Views\PartialView\MenuLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Hangar.Restaurant.DB\Hangar.Restaurant.DB.csproj">
