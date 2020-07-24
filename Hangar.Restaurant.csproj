@@ -148,7 +148,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MenusController.cs" />
+    <Compile Include="Controllers\MenuPageController.cs" />
     <Compile Include="Controllers\MenuSectionController.cs" />
     <Compile Include="Controllers\slideshowController.cs" />
     <Compile Include="Global.asax.cs">
@@ -231,6 +231,7 @@
     <Content Include="Content\js\jquery.mapify.js" />
     <Content Include="Content\js\jquery.superslides.min.js" />
     <Content Include="Content\js\legacy.js" />
+    <Content Include="Content\js\LoadMore.js" />
     <Content Include="Content\js\picker.date.js" />
     <Content Include="Content\js\picker.js" />
     <Content Include="Content\js\picker.time.js" />
@@ -265,7 +266,10 @@
     <None Include="packages.config" />
     <Content Include="Views\PartialView\Menus.cshtml" />
     <Content Include="Views\PartialView\bannerslides.cshtml" />
-    <Content Include="Views\Menus\Index.cshtml" />
+    <Content Include="Views\PartialView\MenuPage.cshtml" />
+    <Content Include="Views\Shared\_MenuPageLayout.cshtml" />
+    <Content Include="Views\MenuPage\Index.cshtml" />
+    <Content Include="Views\PartialView\LoadMoreItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Hangar.Restaurant.DB\Hangar.Restaurant.DB.csproj">
