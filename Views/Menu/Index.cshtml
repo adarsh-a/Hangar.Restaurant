@@ -14,6 +14,18 @@
                     <p>@Model.Description</p>
                 </div>
             </div>
+            <div class="col-lg-12">
+                <div class="dropdown float-right">
+                    <button class="btn btn-sm btn-circle btn-outline-new-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ordery By
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" onclick="ordering('price')">Price</a>
+                        <a class="dropdown-item" onclick="ordering('name')">Name</a>
+                        <a class="dropdown-item" onclick="ordering('type')">Type</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="row inner-menu-box">
@@ -33,16 +45,16 @@
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                        <div class="row">
+                        <div class="row all-parent">
                             @foreach (var item in Model.menuList)
                             {
                                 <div class="col-lg-4 col-md-6 special-grid all">
-                                    <div class="gallery-single fix">
+                                    <div class="gallery-single fix @item.Type.name">
                                         <img src=@item.Image class="img-fluid" alt="Image">
                                         <div class="why-text">
-                                            <h4>@item.Name</h4>
+                                            <h4 class="name">@item.Name</h4>
                                             <p>@item.Description</p>
-                                            <h5> $ @item.Price </h5>
+                                            <h5 class="price"> $ @item.Price </h5>
                                         </div>
                                     </div>
                                 </div>
@@ -54,8 +66,8 @@
                     </div>
                     @foreach (var type in Model.typeList)
                     {
-                <div class="tab-pane fade" id="@type.name" role="tabpanel" aria-labelledby="@type.name-tab">
-                    <div class="row">
+                    <div class="tab-pane fade" id="@type.name" role="tabpanel" aria-labelledby="@type.name-tab">
+                        <div class="row">
                         @foreach (var item in Model.menuList)
                         {
                             if (item.Type.name == type.name)
@@ -72,14 +84,15 @@
                                 </div>
                             }
                         }
+                        </div>
+                        <div>
+                            <button id="loadMore" type="submit" class="btn btn-lg btn-circle btn-outline-new-white">Load More</button>
+                        </div>
                     </div>
-                    <div>
-                        <button id="loadMore" type="submit" class="btn btn-lg btn-circle btn-outline-new-white">Load More</button>
-                    </div>
-                </div>
                     }
                 </div>
             </div>
         </div>
     </div>
 </div>
+

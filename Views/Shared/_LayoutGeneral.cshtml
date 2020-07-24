@@ -231,14 +231,14 @@
     @Scripts.Render("~/Content/js")
     @RenderSection("scripts", required: false)
 
-    <!--Menu show more-->
+    <!--Other scripts for menu-->
     <script>
         $(document).ready(function () {
             //hide everything
             $(".all").hide();
-            $(".drinks").hide();
-            $(".lunch").hide();
-            $(".dinner").hide();
+            $("#drinks .drinks").hide();
+            $("#lunch .lunch").hide();
+            $("#dinner .dinner").hide();
             $("#loadMore").hide();
             $("#drinks #loadMore").hide();
             $("#lunch #loadMore").hide();
@@ -246,53 +246,108 @@
 
             //shows only 9 from each
             $(".all").slice(0, 3).show();
-            $(".drinks").slice(0, 9).show();
-            $(".lunch").slice(0, 9).show();
-            $(".dinner").slice(0, 9).show();
+            $("#drinks .drinks").slice(0, 9).show();
+            $("#lunch .lunch").slice(0, 9).show();
+            $("#dinner .dinner").slice(0, 9).show();
 
             //shows button load more on start if required
             if ($(".all").length > 3) {
                 $("#loadMore").show();
             }
-            if ($(".drinks").length > 9) {
+            if ($("#drinks .drinks").length > 9) {
                 $("#drinks #loadMore").show();
             }
-            if ($(".lunch").length > 9) {
+            if ($("#lunch .lunch").length > 9) {
                 $("#lunch #loadMore").show();
             }
-            if ($(".dinner").length > 9) {
+            if ($("#dinner .dinner").length > 9) {
                 $("#dinner #loadMore").show();
             }
-        
+
             $("#loadMore").on('click', function (e) {
                 e.preventDefault();
-                $(".all:hidden").slice(0,3).slideDown();
+                $(".all:hidden").slice(0, 3).slideDown();
                 if ($(".all:hidden").length == 0) {
                     $("#loadMore").fadeOut('slow');
                 }
             });
             $("#drinks #loadMore").on('click', function (e) {
                 e.preventDefault();
-                $(".drinks:hidden").slice(0,9).slideDown();
+                $("#drinks .drinks:hidden").slice(0, 9).slideDown();
                 if ($(".drinks:hidden").length == 0) {
                     $("#drinks #loadMore").fadeOut('slow');
                 }
             });
             $("#lunch #loadMore").on('click', function (e) {
                 e.preventDefault();
-                $(".lunch:hidden").slice(0,9).slideDown();
+                $("#lunch .lunch:hidden").slice(0, 9).slideDown();
                 if ($(".lunch:hidden").length == 0) {
                     $("#lunch #loadMore").fadeOut('slow');
                 }
             });
             $("#dinner #loadMore").on('click', function (e) {
                 e.preventDefault();
-                $(".dinner:hidden").slice(0,9).slideDown();
+                $("#dinner .dinner:hidden").slice(0, 9).slideDown();
                 if ($(".dinner:hidden").length == 0) {
                     $("#dinner #loadMore").fadeOut('slow');
                 }
             });
         });
+    </script>
+    <script>
+
+
+        function ordering(type) {
+            var toSortObj = document.getElementsByClassName('all');
+            toSortObj = Array.prototype.slice.call(toSortObj, 0);
+
+
+            if (type == "name") {
+                //string sorting
+                toSortObj.sort(function (a, b) {
+                    var aTmp = a.getElementsByClassName(type)[0].innerHTML.toLowerCase();
+                    var bTmp = b.getElementsByClassName(type)[0].innerHTML.toLowerCase();
+
+                    console.log(aTmp, bTmp);
+
+                    // two elements never have the same ID hence this is sufficient:
+                    return (aTmp > bTmp) ? 1 : -1;
+                });
+            } else if (type == "price") {
+                //int sorting
+                toSortObj.sort(function (a, b) {
+                    var aTmp = a.getElementsByClassName('price')[0].innerHTML.toLowerCase().split("$")[1];
+                    var bTmp = b.getElementsByClassName('price')[0].innerHTML.toLowerCase().split("$")[1];
+
+                    // two elements never have the same ID hence this is sufficient:
+                    return (bTmp - aTmp);
+                });
+            }else if (type == "type") {
+                //int sorting
+                toSortObj.sort(function (a, b) {
+                    var aTmp = a.children[0].classList[2];
+                    var bTmp = b.children[0].classList[2];
+
+                    console.log(aTmp, bTmp);
+
+                    // two elements never have the same ID hence this is sufficient:
+                    return (aTmp > bTmp)? 1 : -1;
+                });
+            }
+
+
+
+
+            var parent = document.getElementsByClassName('all-parent')[0];
+            parent.innerHTML = "";
+
+            for (var i = 0; i < toSortObj.length; i++) {
+                parent.appendChild(toSortObj[i]);
+            }
+        }
+
+
+
     </script>
 </body>
 </html>
