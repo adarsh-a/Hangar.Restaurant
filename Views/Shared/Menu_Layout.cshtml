@@ -312,7 +312,6 @@
         });
 
         function sorting(sortName) {
-            console.log(sortName);
             var elements = document.getElementsByClassName("allSort");
             elements = Array.prototype.slice.call(elements, 0);
 
@@ -332,7 +331,14 @@
                     return (bTemp - aTemp);
                 });
             }
-            
+            else {
+                elements.sort(function (a, b) {
+                    console.log(elements);
+                    var aTemp = a.children[0].classList[2].toLowerCase();
+                    var bTemp = b.children[0].classList[2].toLowerCase();
+                    return (aTemp > bTemp ? 1 : -1);
+                });
+            }
             var parent = document.getElementsByClassName("rowToSort")[0];
             parent.innerHTML = "";
 

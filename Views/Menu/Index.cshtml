@@ -34,13 +34,14 @@
                             <div class="dropdown-menu" aria-labelledby="dropdown-a">
                                 <a class="dropdown-item" onclick="sorting('nameAsc')">Name  </a>
                                 <a class="dropdown-item" onclick="sorting('priceDsc')">Price</a>
+                                <a class="dropdown-item" onclick="sorting('typeSort')">Type</a>
                             </div>
                         </div>
                         <div class="row rowToSort">
                             @foreach (var item in Model.menulistVM)
                             {
-                                <div class="col-lg-4 col-md-6 special-grid all allSort">
-                                    <div class="gallery-single fix ">
+                                <div class="col-lg-4 col-md-6 special-grid all allSort type">
+                                    <div class="gallery-single fix @item.Type.Name ">
                                         <img src="@item.Image" class="img-fluid" alt="Image">
                                         <div class="why-text ">
                                             <h4 class="name">@item.Name</h4>
