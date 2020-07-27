@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services;
 
 namespace Hangar.Restaurant.Controllers
 {
@@ -30,11 +31,13 @@ namespace Hangar.Restaurant.Controllers
             MenuSectionEntity menuData = sectionContext.Collection().FirstOrDefault();
             MenuSection section = new MenuSection();
 
-            List<MenuEntity> menus = menuContext.Collection().Include(ent => ent.Type).OrderBy(p => p.Price).ToList();
+            List<MenuEntity> menus = menuContext.Collection().Include(t => t.Type).OrderBy(p => p.Price).Take(9).ToList();
             List<Menu> menuListModel = new List<Menu>();
 
             List<MenuTypeEntity> menuTypes = typeContext.Collection().ToList();
             List<MenuType> menuTypeList = new List<MenuType>();
+
+            int menuCount = menuContext.Collection().Count();
 
 
             if (menuData != null)
@@ -72,10 +75,56 @@ namespace Hangar.Restaurant.Controllers
                 menuList = menuListModel,
                 Title = section.Title,
                 Description = section.Description,
-                typeList = menuTypeList
+                typeList = menuTypeList,
+                menuLength = menuCount
             };
 
             return PartialView(model);
+        }
+
+        [WebMethod]
+        [HttpPost]
+        [AllowAnonymous]
+        public JsonResult loadMenu(int skip, string type)
+        {
+
+            List<MenuEntity> menus;
+            List<Menu> menuListModel = new List<Menu>();
+
+            if (type == "all")
+            {
+                menus = menuContext.Collection().OrderBy(p => p.Price).Skip(skip).Take(3).Include(ent => ent.Type).ToList();
+            }
+            else
+            {
+                menus = menuContext.Collection()
+                    .Where(m => m.Type.name == type)
+                    .OrderBy(p => p.Price)
+                    .Skip(skip)
+                    .Take(3)
+                    .Include(ent => ent.Type)
+                    .ToList();
+            }
+            
+
+            if (menus != null)
+            {
+                foreach (var item in menus)
+                {
+
+                    menuListModel.Add(new Menu()
+                    {
+                        Name = item.Name,
+                        Description = item.Description,
+                        Price = item.Price,
+                        Image = item.Image,
+                        Type = new MenuType() { name = item.Type.name.ToLower() }
+
+                    }); ;
+                }
+            }
+
+            return Json(new { menuListModel });
         }
     }
 }

@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
 }
 
+<asp:ScriptManager ID="ScriptManager1" EnablePageMethods="true" EnablePartialRendering="true" runat="server" />
 <div class="menu-box">
     <div class="container">
         <div class="row">
@@ -46,7 +47,7 @@
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <div class="row all-parent">
-                            @foreach (var item in Model.menuList)
+                            @foreach (var item in Model.menuList.Take(3))
                             {
                                 <div class="col-lg-4 col-md-6 special-grid all">
                                     <div class="gallery-single fix @item.Type.name">
@@ -61,34 +62,33 @@
                             }
                         </div>
                         <div>
-                            <button id="loadMore" type="submit" class="btn btn-lg btn-circle btn-outline-new-white">Load More</button>
+                            <button id="loadMore" type="submit" class="btn btn-lg btn-circle btn-outline-new-white" onclick="GetMenu('all')">Load More</button>
                         </div>
                     </div>
                     @foreach (var type in Model.typeList)
                     {
-                    <div class="tab-pane fade" id="@type.name" role="tabpanel" aria-labelledby="@type.name-tab">
-                        <div class="row">
-                        @foreach (var item in Model.menuList)
-                        {
-                            if (item.Type.name == type.name)
-                            {
-                                <div class="col-lg-4 col-md-6 special-grid @item.Type.name">
-                                    <div class="gallery-single fix">
-                                        <img src=@item.Image class="img-fluid" alt="Image">
-                                        <div class="why-text">
-                                            <h4>@item.Name</h4>
-                                            <p>@item.Description</p>
-                                            <h5> $ @item.Price </h5>
+                        <div class="tab-pane fade" id="@type.name" role="tabpanel" aria-labelledby="@type.name-tab">
+                            <div class="row @type.name-parent">
+                                @foreach (var item in Model.menuList.Where(t => t.Type.name == type.name).Take(2))
+                                {
+                                   
+                                        <div class="col-lg-4 col-md-6 special-grid @item.Type.name">
+                                            <div class="gallery-single fix">
+                                                <img src=@item.Image class="img-fluid" alt="Image">
+                                                <div class="why-text">
+                                                    <h4>@item.Name</h4>
+                                                    <p>@item.Description</p>
+                                                    <h5> $ @item.Price </h5>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            }
-                        }
+                                    
+                                }
+                            </div>
+                            <div>
+                                <button id="loadMore" type="submit" class="btn btn-lg btn-circle btn-outline-new-white" onclick="GetMenu('@type.name')">Load More</button>
+                            </div>
                         </div>
-                        <div>
-                            <button id="loadMore" type="submit" class="btn btn-lg btn-circle btn-outline-new-white">Load More</button>
-                        </div>
-                    </div>
                     }
                 </div>
             </div>
@@ -96,3 +96,74 @@
     </div>
 </div>
 
+<script>
+
+    function GetMenu(parentClassName) {
+        var divCount = "";
+
+        if (parentClassName != "all") {
+            divCount = document.getElementById(parentClassName).getElementsByClassName(parentClassName).length;
+        } else {
+            divCount = document.getElementsByClassName(parentClassName).length;
+        }
+
+        //to view...debug
+        console.log(divCount);
+
+        $.ajax({
+            type: "POST",
+            url: "Menu/loadMenu",
+            data: { skip: divCount, type: parentClassName },
+            success: function (response) {
+                displayMore(response, parentClassName);
+            },
+            failure: function (response) {
+                alert("No more menu!!!");
+            }
+        });
+    }
+
+    function displayMore(data, parent) {
+        var parent = document.getElementsByClassName(parent + "-parent")[0];
+        var menu = data.menuListModel;
+        for (i = 0; i < menu.length; i++) {
+            
+            //create elements
+
+            var div1 = document.createElement('div');
+            var div2 = document.createElement('div');
+            var div3 = document.createElement('div');
+            var img = document.createElement('img');
+            var h4 = document.createElement('h4');
+            var h5 = document.createElement('h5');
+            var p = document.createElement('p');
+            div1.setAttribute('class', 'col-lg-4 col-md-6 special-grid ' + parent);
+            div2.setAttribute('class', 'gallery-single fix ' + menu[i].Type.name);
+            div3.setAttribute('class', 'why-text');
+            img.setAttribute('src', menu[i].Image);
+            img.setAttribute('class', 'img-fluid');
+            img.setAttribute('alt', 'Image');
+            h4.setAttribute('class', 'name');
+            h5.setAttribute('class', 'price');
+
+            textP = document.createTextNode(menu[i].Description);
+            textH4 = document.createTextNode(menu[i].Name);
+            textH5 = document.createTextNode(menu[i].Price);
+
+            //assign text
+            p.appendChild(textP);
+            h4.appendChild(textH4);
+            h5.appendChild(textH5);
+
+            //div structure
+            div3.appendChild(h4);
+            div3.appendChild(p);
+            div3.appendChild(h5);
+            div2.appendChild(img);
+            div2.appendChild(div3);
+            div1.appendChild(div2);
+            parent.appendChild(div1);
+        }
+    }
+
+</script>

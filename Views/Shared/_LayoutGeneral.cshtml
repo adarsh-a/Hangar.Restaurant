@@ -233,7 +233,7 @@
 
     <!--Other scripts for menu-->
     <script>
-        $(document).ready(function () {
+        /*$(document).ready(function () {
             //hide everything
             $(".all").hide();
             $("#drinks .drinks").hide();
@@ -245,13 +245,13 @@
             $("#dinner #loadMore").hide();
 
             //shows only 9 from each
-            $(".all").slice(0, 3).show();
+            $(".all").slice(0, 9).show();
             $("#drinks .drinks").slice(0, 9).show();
             $("#lunch .lunch").slice(0, 9).show();
             $("#dinner .dinner").slice(0, 9).show();
 
             //shows button load more on start if required
-            if ($(".all").length > 3) {
+            if ($(".all").length > 9) {
                 $("#loadMore").show();
             }
             if ($("#drinks .drinks").length > 9) {
@@ -266,7 +266,7 @@
 
             $("#loadMore").on('click', function (e) {
                 e.preventDefault();
-                $(".all:hidden").slice(0, 3).slideDown();
+                $(".all:hidden").slice(0, 9).slideDown();
                 if ($(".all:hidden").length == 0) {
                     $("#loadMore").fadeOut('slow');
                 }
@@ -292,7 +292,7 @@
                     $("#dinner #loadMore").fadeOut('slow');
                 }
             });
-        });
+        });*/
     </script>
     <script>
 

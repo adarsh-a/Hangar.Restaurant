@@ -11,5 +11,6 @@ namespace Hangar.Restaurant.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public List<MenuType> typeList { get; set; }
+        public int menuLength { get; set; }
     }
 }
