@@ -40,7 +40,7 @@
                         <div class="row rowToSort">
                             @foreach (var item in Model.menulistVM)
                             {
-                                <div class="col-lg-4 col-md-6 special-grid all allSort type">
+                                <div class="col-lg-4 col-md-6 special-grid all allSort">
                                     <div class="gallery-single fix @item.Type.Name ">
                                         <img src="@item.Image" class="img-fluid" alt="Image">
                                         <div class="why-text ">
@@ -49,7 +49,7 @@
                                             <h5 class="price">RS @item.Price</h5>
                                         </div>
                                     </div>
-                                </div>
+                                </div><div></div>
                             }
                         </div>
                         <div id="btnLoadMore">

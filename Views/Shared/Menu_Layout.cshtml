@@ -245,10 +245,10 @@
     @RenderSection("scripts", required: false)
 
     <script>
-        $(document).ready(function () {
+        /*$(document).ready(function () {
             $(".all").hide();
-            $(".all").slice(0, 9).show();
-            if ($(".all").length>9) {
+            $(".all").slice(0, 3).show();
+            if ($(".all").length>3) {
                 $("#btnLoadMore").show();
             }
             else {
@@ -256,7 +256,7 @@
             }
             $("#btnLoadMore").on('click', function (e) {
                 e.preventDefault();
-                $(".all:hidden").slice(0, 9).slideDown();
+                $(".all:hidden").slice(0, 3).slideDown();
                 if ($(".all:hidden").length == 0) {
                         $("#btnLoadMore").fadeOut('slow');
                 }
@@ -309,7 +309,7 @@
                     $("#btn-drinks").fadeOut('slow');
                 }
             });
-        });
+        });*/
 
         function sorting(sortName) {
             var elements = document.getElementsByClassName("allSort");
@@ -345,9 +345,36 @@
             for (i = 0; i < elements.length; i++) {
                 parent.appendChild(elements[i]);
             }
-           
-            
         }
+
+        $(function () {
+            $("#btnLoadMore").on('click', function (e) {
+                var loadCount = 1;
+                $.ajax({
+                    url: "menu/menuDisplay",
+                    data: { size: loadCount * 2}, 
+                    cache: false,
+                    type: "POST",
+                    success: function (data) {
+                        /*if (response.collectionCount < response.modelCount ) {
+                            $("#btnLoadMore").hide();
+                            
+                        }*/
+                        /*var ajaxModelCount = data.modelCount - (loadCount * 2);
+                        if (ajaxModelCount <= 0) {
+                            console.log(data)
+                            $("#btnLoadMore").hide().fadeOut(2000);
+                        }*/
+
+                    },
+                    error: function (xhr, status, error) {
+
+                    }
+                });
+                loadCount = loadCount + 1;
+            });
+        });
+
     </script>
    
 
