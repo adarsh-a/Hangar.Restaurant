@@ -1,6 +1,7 @@
 ﻿using Hangar.Restaurant.Contracts;
 using Hangar.Restaurant.Database.Models;
 using Hangar.Restaurant.Models;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -28,13 +29,27 @@ namespace Hangar.Restaurant.Controllers
 
             var menuModel = new MenuSection();
             var menuData = sectionContext.Collection().FirstOrDefault();
+            var countMenus = menuContext.Collection().ToList().Count();
+            int size = 3;
+            List<MenusEntity> menusEntities = menuContext.Collection().Include(x => x.Type).OrderBy(p=>p.ID).Take(size).OrderBy(p=>p.Price).ToList();
 
-            List<MenusEntity> menusEntities = menuContext.Collection().Include(x => x.Type).OrderBy(p=>p.ID).Take(3).OrderBy(p=>p.Price).ToList();
-            
+            var flagCheck = menuContext.Collection().Include(x => x.Type).OrderBy(p => p.ID).Skip(size).ToList().FirstOrDefault();
+            bool flag;
+            if(flagCheck == null)
+            {
+                flag = false;
+            }
+            else
+            {
+                flag = true;
+            }
             List<Menus> menulist = new List<Menus>();
 
             List<MenuTypeEntity> menuTypeEntities = typeContext.Collection().ToList();
+
             List<MenuType> menuTypes = new List<MenuType>();
+
+            
 
             if (menuData != null)
             {
@@ -64,7 +79,7 @@ namespace Hangar.Restaurant.Controllers
                 });
             }
 
-            var model = new MenusViewModel() { menulistVM = menulist, Description = menuModel.Description, Title = menuModel.Title, menuTypesList = menuTypes };
+            var model = new MenusViewModel() { menulistVM = menulist, Description = menuModel.Description, Title = menuModel.Title, menuTypesList = menuTypes, flagElement= flag};
             return PartialView("~/Views/Menu/Index.cshtml", model);
         }
         [HttpPost]
@@ -72,7 +87,18 @@ namespace Hangar.Restaurant.Controllers
         [AllowAnonymous]
         public JsonResult menuDisplay(int size)
         {
-            List<MenusEntity> menusEntities = menuContext.Collection().Include(x => x.Type).OrderBy(p => p.ID).Skip(size).Take(2).OrderBy(p => p.Price).ToList();
+            var sizeLeft = size + 3;
+            List<MenusEntity> menusEntities = menuContext.Collection().Include(x => x.Type).OrderBy(p => p.ID).Skip(size).Take(3).ToList();
+            var flagCount = menuContext.Collection().Include(x => x.Type).OrderBy(p => p.ID).Skip(sizeLeft).Take(1).ToList().FirstOrDefault();
+            bool flag;
+            if (flagCount == null)
+            {
+                flag = false;
+            }
+            else
+            {
+                flag = true;
+            }
             List<Menus> menulist = new List<Menus>();
 
             List<MenusEntity> menusAllCount= menuContext.Collection().Include(x => x.Type).ToList();
@@ -92,7 +118,8 @@ namespace Hangar.Restaurant.Controllers
             }
             int collectionCount = menusAllCount.Count();
             int modelCount = menulist.Count();
-            return Json(new { menulist, modelCount , collectionCount});
+       
+            return Json(new { menulist, modelCount , collectionCount, flag});
         }
     }
 

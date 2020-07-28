@@ -37,7 +37,7 @@
                                 <a class="dropdown-item" onclick="sorting('typeSort')">Type</a>
                             </div>
                         </div>
-                        <div class="row rowToSort">
+                        <div class="row rowToSort" id="rowToSort">
                             @foreach (var item in Model.menulistVM)
                             {
                                 <div class="col-lg-4 col-md-6 special-grid all allSort">
@@ -49,11 +49,11 @@
                                             <h5 class="price">RS @item.Price</h5>
                                         </div>
                                     </div>
-                                </div><div></div>
+                                </div>
                             }
                         </div>
                         <div id="btnLoadMore">
-                            <button type="button" class="btn btn-lg btn-circle btn-outline-new-white">Load More</button>
+                            <button type="button" id="btnLoad" class="btn btn-lg btn-circle btn-outline-new-white" onclick="getMenu()">Load More</button>
                         </div>
                     </div>
                     @foreach (var type in Model.menuTypesList)

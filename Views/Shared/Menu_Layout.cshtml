@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model Hangar.Restaurant.Models.MenusViewModel
+@Html.HiddenFor(m => m.flagElement)
+<!DOCTYPE html>
 <html lang="en">
 <!-- Basic -->
 <head>
@@ -26,7 +28,7 @@
 
 </head>
 
-<body>
+<body onload="checkBtnLoad()">
     <!-- Start header -->
     <header class="top-navbar">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -242,141 +244,11 @@
 
     <!-- ALL JS FILES -->
     @Scripts.Render("~/Content/js")
+    @Scripts.Render("~/content/js/menulist.js")
     @RenderSection("scripts", required: false)
 
-    <script>
-        /*$(document).ready(function () {
-            $(".all").hide();
-            $(".all").slice(0, 3).show();
-            if ($(".all").length>3) {
-                $("#btnLoadMore").show();
-            }
-            else {
-                $("#btnLoadMore").hide();
-            }
-            $("#btnLoadMore").on('click', function (e) {
-                e.preventDefault();
-                $(".all:hidden").slice(0, 3).slideDown();
-                if ($(".all:hidden").length == 0) {
-                        $("#btnLoadMore").fadeOut('slow');
-                }
-            });
-            //lunch
-            $(".lunch").hide();
-            $(".lunch").slice(0, 9).show();
-            if ($(".lunch").length > 9 ) {
-                $("#btn-lunch").show();
-            }
-            else {
-                $("#btn-lunch").hide();
-            }
-            $("#btn-lunch").on('click', function (e) {
-                e.preventDefault();
-                $(".lunch:hidden").slice(0, 9).slideDown();
-                if ($(".lunch:hidden").length == 0) {
-                    $("#btn-lunch").fadeOut('slow');
-                }
-            });
-            //dinner
-            $(".dinner").hide();
-            $(".dinner").slice(0, 9).show();
-            if ($(".dinner").length > 9) {
-                $("#btn-dinner").show();
-            }
-            else {
-                $("#btn-dinner").hide();
-            }
-            $("#btn-dinner").on('click', function (e) {
-                e.preventDefault();
-                $(".dinner:hidden").slice(0, 9).slideDown();
-                if ($(".dinner:hidden").length == 0) {
-                    $("#btn-dinner").fadeOut('slow');
-                }
-            });
-            //drink
-            $(".drinks").hide();
-            $(".drinks").slice(0, 9).show();
-            if ($(".drinks").length > 9) {
-                $("#btn-drinks").show();
-            }
-            else {
-                $("#btn-drinks").hide();
-            }
-            $("#btn-drinks").on('click', function (e) {
-                e.preventDefault();
-                $(".drinks:hidden").slice(0, 9).slideDown();
-                if ($(".drinks:hidden").length == 0) {
-                    $("#btn-drinks").fadeOut('slow');
-                }
-            });
-        });*/
 
-        function sorting(sortName) {
-            var elements = document.getElementsByClassName("allSort");
-            elements = Array.prototype.slice.call(elements, 0);
 
-            if (sortName == "nameAsc") {
-                elements.sort(function (a, b) {
-                    var aTemp = a.getElementsByClassName("name")[0].innerHTML.toLowerCase(); // ading +a for integer
-                    var bTemp = b.getElementsByClassName("name")[0].innerHTML.toLowerCase();
-
-                    return (aTemp > bTemp ? 1 : -1);
-                });
-            }
-            else if (sortName == "priceDsc") {
-                elements.sort(function (a, b) {
-                    var aTemp = a.getElementsByClassName("price")[0].innerHTML.toLowerCase().split("rs")[1]; // ading +a for integer
-                    var bTemp = b.getElementsByClassName("price")[0].innerHTML.toLowerCase().split("rs")[1];
-
-                    return (bTemp - aTemp);
-                });
-            }
-            else {
-                elements.sort(function (a, b) {
-                    console.log(elements);
-                    var aTemp = a.children[0].classList[2].toLowerCase();
-                    var bTemp = b.children[0].classList[2].toLowerCase();
-                    return (aTemp > bTemp ? 1 : -1);
-                });
-            }
-            var parent = document.getElementsByClassName("rowToSort")[0];
-            parent.innerHTML = "";
-
-            for (i = 0; i < elements.length; i++) {
-                parent.appendChild(elements[i]);
-            }
-        }
-
-        $(function () {
-            $("#btnLoadMore").on('click', function (e) {
-                var loadCount = 1;
-                $.ajax({
-                    url: "menu/menuDisplay",
-                    data: { size: loadCount * 2}, 
-                    cache: false,
-                    type: "POST",
-                    success: function (data) {
-                        /*if (response.collectionCount < response.modelCount ) {
-                            $("#btnLoadMore").hide();
-                            
-                        }*/
-                        /*var ajaxModelCount = data.modelCount - (loadCount * 2);
-                        if (ajaxModelCount <= 0) {
-                            console.log(data)
-                            $("#btnLoadMore").hide().fadeOut(2000);
-                        }*/
-
-                    },
-                    error: function (xhr, status, error) {
-
-                    }
-                });
-                loadCount = loadCount + 1;
-            });
-        });
-
-    </script>
-   
 
 </body>
 </html>
