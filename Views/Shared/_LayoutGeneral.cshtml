@@ -27,7 +27,7 @@
 </head>
 
 
-<body>
+<body onload="checkLoadMore('load')">
     <!-- Start header -->
     <header class="top-navbar">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -232,68 +232,7 @@
     @RenderSection("scripts", required: false)
 
     <!--Other scripts for menu-->
-    <script>
-        /*$(document).ready(function () {
-            //hide everything
-            $(".all").hide();
-            $("#drinks .drinks").hide();
-            $("#lunch .lunch").hide();
-            $("#dinner .dinner").hide();
-            $("#loadMore").hide();
-            $("#drinks #loadMore").hide();
-            $("#lunch #loadMore").hide();
-            $("#dinner #loadMore").hide();
-
-            //shows only 9 from each
-            $(".all").slice(0, 9).show();
-            $("#drinks .drinks").slice(0, 9).show();
-            $("#lunch .lunch").slice(0, 9).show();
-            $("#dinner .dinner").slice(0, 9).show();
-
-            //shows button load more on start if required
-            if ($(".all").length > 9) {
-                $("#loadMore").show();
-            }
-            if ($("#drinks .drinks").length > 9) {
-                $("#drinks #loadMore").show();
-            }
-            if ($("#lunch .lunch").length > 9) {
-                $("#lunch #loadMore").show();
-            }
-            if ($("#dinner .dinner").length > 9) {
-                $("#dinner #loadMore").show();
-            }
-
-            $("#loadMore").on('click', function (e) {
-                e.preventDefault();
-                $(".all:hidden").slice(0, 9).slideDown();
-                if ($(".all:hidden").length == 0) {
-                    $("#loadMore").fadeOut('slow');
-                }
-            });
-            $("#drinks #loadMore").on('click', function (e) {
-                e.preventDefault();
-                $("#drinks .drinks:hidden").slice(0, 9).slideDown();
-                if ($(".drinks:hidden").length == 0) {
-                    $("#drinks #loadMore").fadeOut('slow');
-                }
-            });
-            $("#lunch #loadMore").on('click', function (e) {
-                e.preventDefault();
-                $("#lunch .lunch:hidden").slice(0, 9).slideDown();
-                if ($(".lunch:hidden").length == 0) {
-                    $("#lunch #loadMore").fadeOut('slow');
-                }
-            });
-            $("#dinner #loadMore").on('click', function (e) {
-                e.preventDefault();
-                $("#dinner .dinner:hidden").slice(0, 9).slideDown();
-                if ($(".dinner:hidden").length == 0) {
-                    $("#dinner #loadMore").fadeOut('slow');
-                }
-            });
-        });*/
-    </script>
+    
     <script>
 
 

@@ -32,7 +32,7 @@ namespace Hangar.Restaurant.Controllers
             MenuSectionEntity menuData = sectionContext.Collection().FirstOrDefault();
             MenuSection section = new MenuSection();
 
-            List<MenuEntity> menus = menuContext.Collection().Include(ent => ent.Type).ToList();
+            List<MenuEntity> menus = menuContext.Collection().Include(ent => ent.Type).Take(9).ToList();
             List<Menu> menuListModel = new List<Menu>();
 
             List<MenuTypeEntity> menuTypes = typeContext.Collection().ToList();
