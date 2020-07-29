@@ -12,7 +12,7 @@ function checkLoadMore(child) {
 
 function shButton(child, hasNext) {
 
-    btn = document.getElementById("v-pills-home").getElementsByClassName("btn")[0];
+    var btn = document.getElementById("v-pills-home").getElementsByClassName("btn")[0];;
 
     if (child == "load") {
         hasNextLoad = document.getElementById("hasNext").value;
@@ -22,7 +22,14 @@ function shButton(child, hasNext) {
         } else {
             btn.style.display = "none";
         }
+    } else if (child == 'all') {
+        if (hasNext) {
+            btn.style.display = "block";
+        } else {
+            btn.style.display = "none";
+        }
     } else {
+        btn = document.getElementById(child).getElementsByClassName("btn")[0];
         if (hasNext) {
             btn.style.display = "block";
         } else {

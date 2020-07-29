@@ -35,7 +35,7 @@
                     <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">All</a>
                     @foreach (var type in Model.typeList)
                     {
-                        <a class="nav-link" id="@type.name-tab" data-toggle="pill" href="#@type.name" role="tab" aria-controls="@type.name" aria-selected="false">
+                        <a class="nav-link" id="@type.name-tab" data-toggle="pill" href="#@type.name"  role="tab" aria-controls="@type.name" aria-selected="false" onclick="changeTab('@type.name')">
                             <!-- Display first char Uppercase and remaining in lowercase -->
                             @type.name.Substring(0, 1).ToUpper()@type.name.Substring(1)
                         </a>
@@ -65,29 +65,7 @@
                             <button id="loadMore" type="submit" class="btn btn-lg btn-circle btn-outline-new-white" onclick="GetMenu('all')">Load More</button>
                         </div>
                     </div>
-                    @foreach (var type in Model.typeList)
-                    {
-                        <div class="tab-pane fade" id="@type.name" role="tabpanel" aria-labelledby="@type.name-tab">
-                            <div class="row @type.name-parent">
-                                @foreach (var item in Model.menuList.Where(t => t.Type.name == type.name).Take(2))
-                                {
-                                    <div class="col-lg-4 col-md-6 special-grid @item.Type.name">
-                                        <div class="gallery-single fix">
-                                            <img src=@item.Image class="img-fluid" alt="Image">
-                                            <div class="why-text">
-                                                <h4>@item.Name</h4>
-                                                <p>@item.Description</p>
-                                                <h5> $ @item.Price </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            </div>
-                            <div>
-                                <button id="loadMore" type="submit" class="btn btn-lg btn-circle btn-outline-new-white" onclick="GetMenu('@type.name')">Load More</button>
-                            </div>
-                        </div>
-                    }
+                    
                 </div>
             </div>
         </div>

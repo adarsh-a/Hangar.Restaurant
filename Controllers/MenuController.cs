@@ -41,13 +41,9 @@ namespace Hangar.Restaurant.Controllers
 
             MenuEntity menuCheck = menuContext.Collection().Include(t => t.Type).OrderBy(p => p.Price).Skip(initTake).Take(1).FirstOrDefault();
         
-            bool hasNextElemnt;
+            bool hasNextElemnt = false;
 
-            if( menuCheck == null)
-            {
-                hasNextElemnt = false;
-            }
-            else
+            if( menuCheck != null)
             {
                 hasNextElemnt = true;
             }
@@ -59,28 +55,35 @@ namespace Hangar.Restaurant.Controllers
 
             }
 
-            foreach (var item in menus)
+            if(menus != null)
             {
-
-                menuListModel.Add(new Menu()
+                foreach (var item in menus)
                 {
-                    Name = item.Name,
-                    Description = item.Description,
-                    Price = item.Price,
-                    Image = item.Image,
-                    Type = new MenuType() { name = item.Type.name.ToLower() }
 
-                }); ;
+                    menuListModel.Add(new Menu()
+                    {
+                        Name = item.Name,
+                        Description = item.Description,
+                        Price = item.Price,
+                        Image = item.Image,
+                        Type = new MenuType() { name = item.Type.name.ToLower() }
+
+                    }); ;
+                }
             }
-
-            foreach (var type in menuTypes)
+            
+            if(menuTypes != null)
             {
-                //menuTypeList and menuCount must have same order
-                menuTypeList.Add(new MenuType
+                foreach (var type in menuTypes)
                 {
-                    name = type.name.ToLower()
-                });
+                    //menuTypeList and menuCount must have same order
+                    menuTypeList.Add(new MenuType
+                    {
+                        name = type.name.ToLower()
+                    });
+                }
             }
+            
 
             //define model to display in view
             SectionVM model = new SectionVM()
@@ -104,17 +107,14 @@ namespace Hangar.Restaurant.Controllers
             List<MenuEntity> menus;
             List<Menu> menuListModel = new List<Menu>();
             MenuEntity menuCheck = new MenuEntity();
-            bool hasNext;
+            bool hasNext = false;
+            int initTake = 3;
 
             if (type == "all")
             {
-                menus = menuContext.Collection().OrderBy(p => p.Price).Skip(skip).Take(3).Include(ent => ent.Type).ToList();
-                menuCheck = menuContext.Collection().OrderBy(p => p.Price).Skip(skip + 4).Take(1).FirstOrDefault();
-                if ( menuCheck == null)
-                {
-                    hasNext = false;
-                }
-                else
+                menus = menuContext.Collection().OrderBy(p => p.Price).Skip(skip).Take(initTake).Include(ent => ent.Type).ToList();
+                menuCheck = menuContext.Collection().OrderBy(p => p.Price).Skip(skip + initTake).Take(1).FirstOrDefault();
+                if ( menuCheck != null)
                 {
                     hasNext = true;
                 }
@@ -125,15 +125,12 @@ namespace Hangar.Restaurant.Controllers
                     .Where(m => m.Type.name == type)
                     .OrderBy(p => p.Price)
                     .Skip(skip)
-                    .Take(3)
+                    .Take(initTake)
                     .Include(ent => ent.Type)
                     .ToList();
-
-                if (menuContext.Collection().Where(m => m.Type.name == type).OrderBy(p => p.Price).Skip(skip + 4).Take(1) == null)
-                {
-                    hasNext = false;
-                }
-                else
+                menuCheck = menuContext.Collection().Where(m => m.Type.name == type).OrderBy(p => p.Price).Skip(skip + initTake).Take(1).FirstOrDefault();
+                
+                if (menuCheck == null)
                 {
                     hasNext = true;
                 }
@@ -158,6 +155,61 @@ namespace Hangar.Restaurant.Controllers
             }
 
             return Json(new { menuListModel, hasNext });
+        }
+
+        /*[WebMethod]
+        [HttpPost]
+        [AllowAnonymous]
+        public JsonResult sort(string type)
+        {
+            int initTake = 3;
+            List<MenuEntity> menuList = menuContext.Collection()
+                .Include(t => t.Type)
+                .OrderBy(type)
+            return Json(new { });
+        }*/
+        
+        [WebMethod]
+        [HttpPost]
+        [AllowAnonymous]
+        public JsonResult OtherTabs(string type)
+        {
+            int initTake = 3;
+            List<MenuEntity> menuList = menuContext.Collection()
+                .Include(t => t.Type)
+                .Where(t => t.Type.name == type)
+                .Take(initTake)
+                .ToList();
+            List<Menu> menuListModel = new List<Menu>();
+            MenuEntity menuCheck = menuContext.Collection()
+                .Include(t => t.Type)
+                .Where(t => t.Type.name == type)
+                .OrderBy(p => p.Price)
+                .Skip(initTake)
+                .Take(1)
+                .FirstOrDefault();
+            bool hasNext = false;
+
+            if (menuCheck != null)
+            {
+                hasNext = true;
+            }
+
+            if (menuList != null)
+            {
+                foreach(var menu in menuList)
+                {
+                    menuListModel.Add(new Menu
+                    {
+                        Name = menu.Name,
+                        Description = menu.Description,
+                        Image = menu.Image,
+                        Price = menu.Price,
+                        Type = new MenuType { name = menu.Type.name }
+                    });
+                }
+            }
+            return Json(new {menuListModel, hasNext});
         }
     }
 }
