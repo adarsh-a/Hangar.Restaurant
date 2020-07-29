@@ -224,6 +224,7 @@
     <Content Include="Content\js\contact-form-script.js" />
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\form-validator.min.js" />
+    <Content Include="Content\js\getType.js" />
     <Content Include="Content\js\images-loded.min.js" />
     <Content Include="Content\js\isotope.min.js" />
     <Content Include="Content\js\jquery-3.2.1.min.js" />

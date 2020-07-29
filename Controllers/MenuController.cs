@@ -121,6 +121,24 @@ namespace Hangar.Restaurant.Controllers
        
             return Json(new { menulist, modelCount , collectionCount, flag});
         }
+        [HttpPost]
+        [WebMethod]
+        [AllowAnonymous]
+        public JsonResult getTypeList(string type)
+        {
+            List<MenusEntity> menusEntities = menuContext.Collection().Include(x => x.Type).Where(t=>t.Type.Name == type).ToList();
+       
+            List<MenuType> menuTypes = new List<MenuType>();
+
+            foreach (var item in menusEntities)
+            {
+                menuTypes.Add(new MenuType()
+                {
+                    Name = item.Name.ToLower()
+                });
+            }
+            return Json(new { menuTypes});
+        }
     }
 
 }

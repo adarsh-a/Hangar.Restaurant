@@ -100,18 +100,18 @@
                 parent.appendChild(elements[i]);
             }
         }
-        function checkBtnLoad() {
+        /*function checkBtnLoad() {
           
             var checkFlagElement = document.getElementById("flagElement").value;
             console.log(checkFlagElement);
             if (checkFlagElement == true) {
-                document.getElementById("btnLoad").style("display", "none");
+                document.getElementsByClassName("btnLoad").style("display", "none");
             }
             else {
-                document.getElementById("btnLoad").style("display", "none");
+                document.getElementsByClassName("btnLoad").style("display", "none");
             }
 
-        }
+        }*/
   
         function getMenu() {
             var countDisplay = document.getElementsByClassName("allSort").length;
@@ -172,7 +172,7 @@
                         $("#btnLoadMore").hide();
                     }*/
                     if (flag == false) {
-                        $("#btnLoadMore").hide();
+                        document.getElementsByClassName("btnLoad").style("display", "none");
                     }
 
                 },
@@ -183,3 +183,4 @@
             
                 
         }
+

@@ -20,7 +20,7 @@
                     <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">All</a>
                     @foreach (var type in Model.menuTypesList)
                     {
-                        <a class="nav-link" id="@type.Name-tab" data-toggle="pill" href="#@type.Name" role="tab" aria-controls="@type.Name" aria-selected="false">@type.Name.ToUpper().Substring(0, 1)@type.Name.ToLower().Substring(1)</a>
+                        <a class="nav-link" id="@type.Name-tab" data-toggle="pill" href="#@type.Name" role="tab" aria-controls="@type.Name" aria-selected="false" onclick="getType('@type.Name')">@type.Name.ToUpper().Substring(0, 1)@type.Name.ToLower().Substring(1)</a>
                     }
 
                 </div>
@@ -53,7 +53,7 @@
                             }
                         </div>
                         <div id="btnLoadMore">
-                            <button type="button" id="btnLoad" class="btn btn-lg btn-circle btn-outline-new-white" onclick="getMenu()">Load More</button>
+                            <button type="button" id="btnLoad" class="btn btn-lg btn-circle btn-outline-new-white btnLoad" onclick="getMenu()">Load More</button>
                         </div>
                     </div>
                     @foreach (var type in Model.menuTypesList)
