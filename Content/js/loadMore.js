@@ -86,7 +86,7 @@ function displayMore(data, childClassName) {
 
         textP = document.createTextNode(menu[i].Description);
         textH4 = document.createTextNode(menu[i].Name);
-        textH5 = document.createTextNode(menu[i].Price);
+        textH5 = document.createTextNode('$ ' + menu[i].Price);
 
         //assign text
         p.appendChild(textP);

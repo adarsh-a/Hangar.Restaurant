@@ -122,15 +122,15 @@ namespace Hangar.Restaurant.Controllers
             else
             {
                 menus = menuContext.Collection()
+                    .Include(ent => ent.Type)
                     .Where(m => m.Type.name == type)
                     .OrderBy(p => p.Price)
                     .Skip(skip)
                     .Take(initTake)
-                    .Include(ent => ent.Type)
                     .ToList();
                 menuCheck = menuContext.Collection().Where(m => m.Type.name == type).OrderBy(p => p.Price).Skip(skip + initTake).Take(1).FirstOrDefault();
                 
-                if (menuCheck == null)
+                if (menuCheck != null)
                 {
                     hasNext = true;
                 }
@@ -156,27 +156,16 @@ namespace Hangar.Restaurant.Controllers
 
             return Json(new { menuListModel, hasNext });
         }
-
-        /*[WebMethod]
-        [HttpPost]
-        [AllowAnonymous]
-        public JsonResult sort(string type)
-        {
-            int initTake = 3;
-            List<MenuEntity> menuList = menuContext.Collection()
-                .Include(t => t.Type)
-                .OrderBy(type)
-            return Json(new { });
-        }*/
         
         [WebMethod]
         [HttpPost]
         [AllowAnonymous]
         public JsonResult OtherTabs(string type)
         {
-            int initTake = 3;
+            int initTake = 1;
             List<MenuEntity> menuList = menuContext.Collection()
                 .Include(t => t.Type)
+                .OrderBy(p => p.Price)
                 .Where(t => t.Type.name == type)
                 .Take(initTake)
                 .ToList();
