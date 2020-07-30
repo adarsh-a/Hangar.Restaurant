@@ -14,5 +14,6 @@ namespace Hangar.Restaurant.Models
         public List<SlideshowModel> slides { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public bool hasNext { get; set; }
     }
 }

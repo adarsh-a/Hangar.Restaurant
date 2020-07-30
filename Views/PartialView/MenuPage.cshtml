@@ -9,8 +9,19 @@
                     <p>@Model.Description</p>
                 </div>
             </div>
+            <div class="col-lg-12">
+                <div class="dropdown float-right">
+                    <button class="btn btn-sm btn-circle btn-outline-new-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ordery By
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" onclick="ordering('price')">Price</a>
+                        <a class="dropdown-item" onclick="ordering('name')">Name</a>
+                        <a class="dropdown-item" onclick="ordering('type')">Type</a>
+                    </div>
+                </div>
+            </div>
         </div>
-
         <div class="row inner-menu-box">
             <div class="col-3">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -19,51 +30,56 @@
                     {
                         <a class="nav-link" id="@item.name-tab" data-toggle="pill" href="#@item.name" role="tab" aria-controls="@item.name" aria-selected="false">@item.name</a>
                     }
-
                 </div>
             </div>
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                        <div class="row">
+                        <div class="row all-parent">
                             @foreach (var item in Model.menuList)
                             {
-                                <div class="col-lg-4 col-md-6 special-grid  @item.Type.name">
-                                    <div class="gallery-single fix">
+                                <div class="col-lg-4 col-md-6 special-grid all">
+                                    <div class="gallery-single fix @item.Type.name">
                                         <img src=../@item.Image class="img-fluid" alt="Image">
                                         <div class="why-text">
-                                            <h4>@item.Name</h4>
+                                            <h4 class="name">@item.Name</h4>
                                             <p>@item.Description</p>
-                                            <h5> $@item.Price</h5>
+                                            <h5 class="price"> $ @item.Price</h5>
                                         </div>
                                     </div>
                                 </div>
-                             }
+                            }
+                        </div>
+                        <div>
+                            <button id="loadMore" type="submit" class="btn btn-lg btn-circle btn-outline-new-white" onclick="GetMenu('all')">Load More</button>
                         </div>
                     </div>
                     @foreach (var header in Model.menutype)
                     {
                         <div class="tab-pane fade" id="@header.name" role="tabpanel" aria-labelledby="@header.name-tab">
-                            <div class="row">
-                                @foreach (var item in Model.menuList)
+                            <div class="row @header.name-parent">
+                                @foreach (var item in Model.menuList. Where(t => t.Type.name == header.name).Take(3))
                                 {
                                     if (item.Type.name == header.name)
                                     {
-                                        <div class="col-lg-4 col-md-6 special-grid @header.name">
-                                            <div class="gallery-single fix">
+                                        <div class="col-lg-4 col-md-6 special-grid @item.Type.name all-parent">
+                                            <div class="gallery-single fix @item.Type.name">
                                                 <img src=../@item.Image class="img-fluid" alt="Image">
                                                 <div class="why-text">
-                                                    <h4>@item.Name</h4>
+                                                    <h4 class="name">@item.Name</h4>
                                                     <p>@item.Description</p>
-                                                    <h5> $@item.Price</h5>
+                                                    <h5 class="price"> $ @item.Price</h5>
                                                 </div>
                                             </div>
-                                        </div>          
+                                        </div>
                                     }
-                                }
+                                 }
+                            </div>
+                            <div>
+                                <button id="loadMore" type="submit" class="btn btn-lg btn-circle btn-outline-new-white" onclick="GetMenu('@header.name')">Load More</button>
                             </div>
                         </div>
-                     }
+                    }
                 </div>
             </div>
         </div>
