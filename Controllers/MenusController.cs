@@ -37,7 +37,7 @@ namespace Hangar.Restaurant.Controllers
             MenuType menuType = new MenuType();
             SpecialMenusEntity smData = specialMenuContext.Collection().FirstOrDefault();
 
-            List<MenusEntity> menuList = menuContext.Collection().Include(ent => ent.Type).ToList();
+            List<MenusEntity> menuList = menuContext.Collection().Include(ent => ent.Type).Take(9).ToList();
             //List<SpecialMenusEntity> specialList = specialMenuContext.Collection().Include(ent => ent.Id).ToList();
             List<MenuTypeEntity> menuTypeList = menuTypeContext.Collection().ToList();
             List<Menus> MenusModel = new List<Menus>();

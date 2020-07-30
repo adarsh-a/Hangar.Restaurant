@@ -19,14 +19,6 @@
     <link rel="shortcut icon" href="~/Content/images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="~/Content/images/apple-touch-icon.png">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Site CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="css/responsive.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css">
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -42,8 +34,8 @@
     <header class="top-navbar">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <img src="~/Content/images/logo.png" alt="" />
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                    <img src="@Url.Content("~/Content/images/logo.png")" alt="" />
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -253,6 +245,7 @@
 
     <script src="~/Content/js/jquery-3.2.1.min.js"></script>
     <script src="~/Content/js/popper.min.js"></script>
+    <script src="~/Content/js/bootstrap.bundle.min.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script> <!-- ALL PLUGINS -->
     <script src="~/Content/js/jquery.superslides.min.js"></script>
     <script src="~/Content/js/images-loded.min.js"></script>
@@ -263,6 +256,8 @@
     <script src="~/Content/js/custom.js"></script>
     <script src="~/Content/js/images-loaded.min.js"></script>
     <script src="~/Content/js/picker.date.js"></script>
+    <script src="~/Content/js/loadmore.js"></script>
+
     @Scripts.Render("~/Content/js")
     @*@RenderSection("scripts", required: false)*@
 </body>

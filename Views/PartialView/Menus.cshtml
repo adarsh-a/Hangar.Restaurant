@@ -38,7 +38,7 @@
                             {
                                 <div class="col-lg-4 col-md-6 special-grid @item.Typex">
                                     <div class="gallery-single fix">
-                                        <img src="@Html.DisplayFor(modelItem => item.Image)" class="img-fluid" alt="Image">
+                                        <img src="../@Html.DisplayFor(modelItem => item.Image)" class="img-fluid" alt="Image">
                                         <div class="why-text">
                                             <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
                                             <p>@Html.DisplayFor(modelItem => item.Description)</p>
@@ -61,7 +61,7 @@
                                     {
                                         <div class="col-lg-4 col-md-6 special-grid @types.Name">
                                             <div class="gallery-single fix">
-                                                <img src="@Html.DisplayFor(modelItem => item.Image)" class="img-fluid" alt="Image">
+                                                <img src="../@Html.DisplayFor(modelItem => item.Image)" class="img-fluid" alt="Image">
                                                 <div class="why-text">
                                                     <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
                                                     <p>@Html.DisplayFor(modelItem => item.Description)</p>
