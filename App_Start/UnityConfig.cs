@@ -52,6 +52,8 @@ namespace Hangar.Restaurant
             container.RegisterType<IRepositoryBase<MenuSectionEntity>, SQLRepository<MenuSectionEntity>>();
             container.RegisterType<IRepositoryBase<SpecialMenuEntity>, SQLRepository<SpecialMenuEntity>>();
             container.RegisterType<IRepositoryBase<BannerEntity>, SQLRepository<BannerEntity>>();
+            container.RegisterType<IRepositoryBase<ReservationEntity>, SQLRepository<ReservationEntity>>();
+            container.RegisterType<IRepositoryBase<TableEntity>, SQLRepository<TableEntity>>();
         }
     }
 }

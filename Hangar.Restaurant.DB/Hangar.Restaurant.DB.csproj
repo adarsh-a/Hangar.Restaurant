@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\Models\BannerEntity.cs" />
+    <Compile Include="Database\Models\ReservationEntity.cs" />
+    <Compile Include="Database\Models\TableEntity.cs" />
     <Compile Include="Migrations\202007200733586_price_float_to_decimal.cs" />
     <Compile Include="Migrations\202007200733586_price_float_to_decimal.designer.cs">
       <DependentUpon>202007200733586_price_float_to_decimal.cs</DependentUpon>
@@ -90,6 +92,14 @@
     <Compile Include="Migrations\202007201226273_new_table_banner.designer.cs">
       <DependentUpon>202007201226273_new_table_banner.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007300740065_reservation_system.cs" />
+    <Compile Include="Migrations\202007300740065_reservation_system.designer.cs">
+      <DependentUpon>202007300740065_reservation_system.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007300743368_foreign_key_added.cs" />
+    <Compile Include="Migrations\202007300743368_foreign_key_added.designer.cs">
+      <DependentUpon>202007300743368_foreign_key_added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\SQLRepository.cs" />
@@ -122,6 +132,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007201226273_new_table_banner.resx">
       <DependentUpon>202007201226273_new_table_banner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007300740065_reservation_system.resx">
+      <DependentUpon>202007300740065_reservation_system.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007300743368_foreign_key_added.resx">
+      <DependentUpon>202007300743368_foreign_key_added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

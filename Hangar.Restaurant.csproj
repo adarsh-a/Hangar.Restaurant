@@ -150,6 +150,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\MenuSectionController.cs" />
+    <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -157,8 +158,11 @@
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\MenuSection.cs" />
     <Compile Include="Models\MenuType.cs" />
+    <Compile Include="Models\Reservation.cs" />
+    <Compile Include="Models\ReservationVM.cs" />
     <Compile Include="Models\SectionVM.cs" />
     <Compile Include="Models\SpecialMenu.cs" />
+    <Compile Include="Models\Table.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -280,6 +284,7 @@
     <Content Include="Views\Banner\BannerSection.cshtml" />
     <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutGeneral.cshtml" />
+    <Content Include="Views\Reservation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Hangar.Restaurant.DB\Hangar.Restaurant.DB.csproj">

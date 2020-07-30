@@ -10,21 +10,21 @@ namespace Hangar.Restaurant
         {  
            
             bundles.Add(new ScriptBundle("~/Content/js").Include(
-                      "~/Content/js/baguetteBox.min.js",                      
-                      "~/Content/js/contact-form-script.js",                     
+                      "~/Content/js/baguetteBox.min.js",                                        
                       "~/Content/js/form-validator.min.js",
                        "~/Content/js/images-loded.min.js",
                        "~/Content/js/isotope.min.js",                      
                        "~/Content/js/jquery.mapify.js",
                        "~/Content/js/jquery.superslides.min.js",
                        "~/Content/js/legacy.js",
-                      "~/Content/js/picker.date.js",
-                       "~/Content/js/picker.js",
-                      "~/Content/js/picker.time.js",
-                      "~/Content/js/custom.js",
                        "~/Content/js/jquery-3.2.1.min.js",
                       "~/Content/js/popper.min.js",
                       "~/Content/js/bootstrap.min.js",
+                       "~/Content/js/picker.js",
+                      "~/Content/js/picker.time.js",
+                      "~/Content/js/picker.date.js",
+                      "~/Content/js/custom.js",
+                      "~/Content/js/contact-form-script.js",
                       "~/Content/js/loadMore.js",
                       "~/Content/js/otherTabs.js"
                      ));
