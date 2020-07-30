@@ -100,80 +100,36 @@
                 parent.appendChild(elements[i]);
             }
         }
-        /*function checkBtnLoad() {
+        function checkBtnLoad() {
           
             var checkFlagElement = document.getElementById("flagElement").value;
-            console.log(checkFlagElement);
+           
             if (checkFlagElement == true) {
-                document.getElementsByClassName("btnLoad").style("display", "none");
+                document.getElementById("btnLoad").style.display =  "none";
             }
             else {
-                document.getElementsByClassName("btnLoad").style("display", "none");
+                document.getElementById("btnLoad").style.display= "block";
             }
 
-        }*/
+        }
   
-        function getMenu() {
+        function getMenu(parentName) {
             var countDisplay = document.getElementsByClassName("allSort").length;
+            
             $.ajax({
                 url: "menu/menuDisplay",
                 data: { size: countDisplay }, 
                 cache: false,
                 type: "POST",
                 success: function (response) {
+
+                    createDivs(response, parentName);
                     
-                    count = response.modelCount;
-                    flag = response.flag;
-                    for (var i = 0; i < count; i++) {
+                        if (flag == false) {
+                            document.getElementById("btnLoad").style.display = "none";
+                        }
                     
-                        var name = document.createTextNode(response.menulist[i].Name);
-                        var price = document.createTextNode(response.menulist[i].Price);
-                        var description = document.createTextNode(response.menulist[i].Description);
-                        var typeName = response.menulist[i].Type.Name;
-                        var image = response.menulist[i].Image;
-
-                        var container = document.createElement("DIV");
-                        var container2 = document.createElement("DIV");
-                        var img = document.createElement("IMG");
-                        var containerTxt = document.createElement("DIV");
-                        var h4 = document.createElement("H4");
-                        var p = document.createElement("P");
-                        var h5 = document.createElement("H5");
-
-                        container.setAttribute("class", "col-lg-4 col-md-6 special-grid all allSort");
-                        container2.setAttribute("class", "gallery-single fix " +typeName );
-                        
-                        img.setAttribute("class", "img-fluid");
-                        img.setAttribute("src", image);
-                        img.setAttribute("alt", "Image");
-                        
-                       
-                        containerTxt.setAttribute("class", "why-text");
-                        h4.setAttribute("class", "name");
-                        h5.setAttribute("class", "price");
-
-                        document.getElementById("rowToSort").appendChild(container);
-                        container.appendChild(container2);
-                        container2.appendChild(img);
-                        container2.appendChild(containerTxt);
-                        containerTxt.appendChild(h4);
-                        containerTxt.appendChild(p);
-                        containerTxt.appendChild(h5);
-
-
-                        h4.appendChild(name);
-                        h5.appendChild(price);
-                        p.appendChild(description);
-
-                    }
-                    //countAllDisplay = countDisplay + count;
-                    /*
-                    if ( countAllDisplay ==response.collectionCount) {
-                        $("#btnLoadMore").hide();
-                    }*/
-                    if (flag == false) {
-                        document.getElementsByClassName("btnLoad").style("display", "none");
-                    }
+                    
 
                 },
                 error: function (xhr, status, error) {

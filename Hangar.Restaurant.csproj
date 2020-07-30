@@ -222,6 +222,7 @@
     <Content Include="Content\js\baguetteBox.min.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\contact-form-script.js" />
+    <Content Include="Content\js\createDivs.js" />
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\form-validator.min.js" />
     <Content Include="Content\js\getType.js" />

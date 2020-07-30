@@ -25,7 +25,11 @@ namespace Hangar.Restaurant
                         "~/Content/js/custom.js",
                        "~/Content/js/jquery-3.2.1.min.js",
                       "~/Content/js/popper.min.js",
-                      "~/Content/js/bootstrap.min.js"
+                      "~/Content/js/bootstrap.min.js",
+                      "~/content/js/getType.js",
+                      "~/content/js/menulist.js",
+                      "~/content/js/createDivs.js"
+
                      ));
 
 

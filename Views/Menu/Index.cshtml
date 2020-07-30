@@ -53,13 +53,13 @@
                             }
                         </div>
                         <div id="btnLoadMore">
-                            <button type="button" id="btnLoad" class="btn btn-lg btn-circle btn-outline-new-white btnLoad" onclick="getMenu()">Load More</button>
+                            <button type="button" id="btnLoad" class="btn btn-lg btn-circle btn-outline-new-white btnLoad" onclick="getMenu('all allSort')">Load More</button>
                         </div>
                     </div>
-                    @foreach (var type in Model.menuTypesList)
+                    @*@foreach (var type in Model.menuTypesList)
                     {
                         <div class="tab-pane fade" id="@type.Name" role="tabpanel" aria-labelledby="@type.Name-tab">
-                            <div class="row">
+                            <div class="row rowGetType" id="rowGetType">@item tye
                                 @foreach (var item in Model.menulistVM)
                                 {
                                     if (item.Type.Name == type.Name)
@@ -81,7 +81,7 @@
                                 </div>
                             </div>
                         </div>
-                    }
+                    }*@
                 </div>
             </div>
         </div>

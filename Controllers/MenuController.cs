@@ -37,11 +37,11 @@ namespace Hangar.Restaurant.Controllers
             bool flag;
             if(flagCheck == null)
             {
-                flag = false;
+                flag = true;
             }
             else
             {
-                flag = true;
+                flag = false;
             }
             List<Menus> menulist = new List<Menus>();
 
@@ -87,7 +87,7 @@ namespace Hangar.Restaurant.Controllers
         [AllowAnonymous]
         public JsonResult menuDisplay(int size)
         {
-            var sizeLeft = size + 3;
+            var sizeLeft = size+3;
             List<MenusEntity> menusEntities = menuContext.Collection().Include(x => x.Type).OrderBy(p => p.ID).Skip(size).Take(3).ToList();
             var flagCount = menuContext.Collection().Include(x => x.Type).OrderBy(p => p.ID).Skip(sizeLeft).Take(1).ToList().FirstOrDefault();
             bool flag;
@@ -126,18 +126,36 @@ namespace Hangar.Restaurant.Controllers
         [AllowAnonymous]
         public JsonResult getTypeList(string type)
         {
-            List<MenusEntity> menusEntities = menuContext.Collection().Include(x => x.Type).Where(t=>t.Type.Name == type).ToList();
+            List<MenusEntity> menusEntities = menuContext.Collection().Include(x => x.Type).Where(t=>t.Type.Name == type).OrderBy(p => p.ID).ToList();
        
-            List<MenuType> menuTypes = new List<MenuType>();
+            List<Menus> menulist = new List<Menus>();
+            /*var flagCount = menuContext.Collection().Include(x => x.Type).Where(t=>t.Type.Name== type).OrderBy(p=>p.ID).Skip(1).Take(1).ToList().FirstOrDefault();
+            bool flag;
+            if (flagCount == null)
+            {
+                flag = false;
+            }
+            else
+            {
+                flag = true;
+            }*/
 
             foreach (var item in menusEntities)
             {
-                menuTypes.Add(new MenuType()
+                menulist.Add(new Menus()
                 {
-                    Name = item.Name.ToLower()
+                    Name = item.Name.ToLower(),
+                    Description = item.Description,
+                    Image = item.Image,
+                    Price = item.Price,
+                    Type = new MenuType() { Name = item.Type.Name.ToLower() }
+
+
+
                 });
             }
-            return Json(new { menuTypes});
+            int modelCount = menulist.Count();
+            return Json(new { menulist, modelCount});
         }
     }
 
