@@ -85,20 +85,43 @@ namespace Hangar.Restaurant.Controllers
         [HttpPost]
         [WebMethod]
         [AllowAnonymous]
-        public JsonResult menuDisplay(int size)
+        public JsonResult menuDisplay(int size, string type, int sizeType)
         {
-            var sizeLeft = size+3;
-            List<MenusEntity> menusEntities = menuContext.Collection().Include(x => x.Type).OrderBy(p => p.ID).Skip(size).Take(3).ToList();
-            var flagCount = menuContext.Collection().Include(x => x.Type).OrderBy(p => p.ID).Skip(sizeLeft).Take(1).ToList().FirstOrDefault();
-            bool flag;
-            if (flagCount == null)
+            bool flag = true;
+            bool flagType = true;
+            List<MenusEntity> menusEntities;
+            if (type == "all allSort")
             {
-                flag = false;
+                var sizeLeft = size + 3;
+                menusEntities = menuContext.Collection().Include(x => x.Type).OrderBy(p => p.ID).Skip(size).Take(3).ToList();
+                var flagCount = menuContext.Collection().Include(x => x.Type).OrderBy(p => p.ID).Skip(sizeLeft).Take(1).ToList().FirstOrDefault();
+
+                if (flagCount == null)
+                {
+                    flag = false;
+                }
+                else
+                {
+                    flag = true;
+                }
             }
             else
             {
-                flag = true;
+                var sizeLeft = sizeType +1;
+                menusEntities = menuContext.Collection().Include(x => x.Type).Where(t => t.Type.Name == type).OrderBy(p => p.ID).Skip(sizeType).Take(1).ToList();
+                var flagCountType = menuContext.Collection().Include(x => x.Type).Where(t => t.Type.Name == type).OrderBy(p => p.ID).Skip(sizeLeft).Take(1).ToList().FirstOrDefault();
+
+                if (flagCountType == null)
+                {
+                    flagType = false;
+                }
+                else
+                {
+                    flagType = true;
+                }
             }
+            
+
             List<Menus> menulist = new List<Menus>();
 
             List<MenusEntity> menusAllCount= menuContext.Collection().Include(x => x.Type).ToList();
@@ -118,27 +141,20 @@ namespace Hangar.Restaurant.Controllers
             }
             int collectionCount = menusAllCount.Count();
             int modelCount = menulist.Count();
-       
-            return Json(new { menulist, modelCount , collectionCount, flag});
+
+            
+
+            return Json(new { menulist, modelCount , collectionCount, flag, flagType});
         }
         [HttpPost]
         [WebMethod]
         [AllowAnonymous]
         public JsonResult getTypeList(string type)
         {
-            List<MenusEntity> menusEntities = menuContext.Collection().Include(x => x.Type).Where(t=>t.Type.Name == type).OrderBy(p => p.ID).ToList();
+            List<MenusEntity> menusEntities = menuContext.Collection().Include(x => x.Type).Where(t=>t.Type.Name == type).OrderBy(p=>p.ID).Take(1).ToList();
        
             List<Menus> menulist = new List<Menus>();
-            /*var flagCount = menuContext.Collection().Include(x => x.Type).Where(t=>t.Type.Name== type).OrderBy(p=>p.ID).Skip(1).Take(1).ToList().FirstOrDefault();
-            bool flag;
-            if (flagCount == null)
-            {
-                flag = false;
-            }
-            else
-            {
-                flag = true;
-            }*/
+            
 
             foreach (var item in menusEntities)
             {

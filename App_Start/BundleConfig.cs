@@ -29,7 +29,6 @@ namespace Hangar.Restaurant
                       "~/content/js/getType.js",
                       "~/content/js/menulist.js",
                       "~/content/js/createDivs.js"
-
                      ));
 
 

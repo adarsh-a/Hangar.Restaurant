@@ -19,7 +19,7 @@
         var h5 = document.createElement("H5");
 
         container.setAttribute("class", "col-lg-4 col-md-6 special-grid " + parentName);
-        container2.setAttribute("class", "gallery-single fix " + typeName);
+        container2.setAttribute("class", "gallery-single fix ");
 
         img.setAttribute("class", "img-fluid");
         img.setAttribute("src", image);
@@ -55,7 +55,11 @@ function newDivs(response, parentName) {
     var elements = document.getElementById(parentName);
 
     if (!document.contains(elements)) {
-        
+        var elementShow = document.getElementsByClassName("tab-pane fade show active");
+
+        for (var i = 0; i < elementShow.length; i++) {
+            document.getElementsByClassName("tab-pane fade show active")[i].setAttribute("class", "tab-pane fade");
+        }
         var divParentType = document.createElement("DIV");
         divParentType.setAttribute("class", "tab-pane fade show active");
         divParentType.setAttribute("id", parentName );
@@ -73,17 +77,15 @@ function newDivs(response, parentName) {
         createDivs(response, parentName);
 
         var divBtnLoad = document.createElement("DIV");
+        divBtnLoad.setAttribute("id", parentName + "-divLoad");
         var btnLoadMore = document.createElement("BUTTON");
         btnLoadMore.setAttribute("class", "btn btn-lg btn-circle btn-outline-new-white btnLoad");
-        btnLoadMore.setAttribute("onclick", "getMenu(parentName)");
-        btnLoadMore.setAttribute("id", "btnload");
+        btnLoadMore.setAttribute("onclick", "getMenu('" + parentName + "')");
+        btnLoadMore.setAttribute("id", "btnloadType");
         var txtBtnLoad = document.createTextNode("Load More");
         btnLoadMore.appendChild(txtBtnLoad);
         divBtnLoad.appendChild(btnLoadMore);
         divParentType.appendChild(divBtnLoad);
 
-
     }
-   
-   
 }
