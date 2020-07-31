@@ -28,7 +28,8 @@ namespace Hangar.Restaurant
                       "~/Content/js/bootstrap.min.js",
                       "~/content/js/getType.js",
                       "~/content/js/menulist.js",
-                      "~/content/js/createDivs.js"
+                      "~/content/js/createDivs.js",
+                      "~/content/js/sorting.js"
                      ));
 
 

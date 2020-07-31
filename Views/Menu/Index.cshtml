@@ -13,7 +13,14 @@
                 </div>
             </div>
         </div>
-
+        <div id="sorting" class="btn btn-lg btn-circle btn-outline-new-white" style="margin-left: 75%;">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Sorting</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown-a">
+                <a class="dropdown-item" onclick="sorting('Name')">Name  </a>
+                <a class="dropdown-item" onclick="sorting('Price')">Price</a>
+                <a class="dropdown-item" onclick="sorting('Type')">Type</a>
+            </div>
+        </div>
         <div class="row inner-menu-box">
             <div class="col-3">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -29,14 +36,7 @@
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                        <div id="sorting" class="btn btn-lg btn-circle btn-outline-new-white" style="margin-left: 75%;">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Sorting</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown-a">
-                                <a class="dropdown-item" onclick="sorting('nameAsc')">Name  </a>
-                                <a class="dropdown-item" onclick="sorting('priceDsc')">Price</a>
-                                <a class="dropdown-item" onclick="sorting('typeSort')">Type</a>
-                            </div>
-                        </div>
+
                         <div class="row rowToSort" id="rowToSort">
                             @foreach (var item in Model.menulistVM)
                             {

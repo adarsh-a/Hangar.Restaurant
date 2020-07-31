@@ -1,5 +1,5 @@
 ﻿
-function sorting(sortName) {
+/*function sorting(sortName) {
     var elements = document.getElementsByClassName("allSort");
     elements = Array.prototype.slice.call(elements, 0);
 
@@ -33,7 +33,7 @@ function sorting(sortName) {
     for (i = 0; i < elements.length; i++) {
         parent.appendChild(elements[i]);
     }
-}
+}*/
 function checkBtnLoad() {
           
     var checkFlagElement = document.getElementById("flagElement").value;
@@ -65,10 +65,11 @@ function getMenu(parentName) {
         cache: false,
         type: "POST",
         success: function (response) {
-
+            sorting(parentName, countDisplay);
             createDivs(response, parentName);
-
+            sorting(parentName);
             if (response.flag == false) {
+
                 document.getElementById("btnLoad").style.display = "none";
             }
             else if (response.flagType == false) {

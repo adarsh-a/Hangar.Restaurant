@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Services;
@@ -172,6 +173,48 @@ namespace Hangar.Restaurant.Controllers
             }
             int modelCount = menulist.Count();
             return Json(new { menulist, modelCount});
+        }
+        [HttpPost]
+        [WebMethod]
+        [AllowAnonymous]
+        public JsonResult getSort(string sortType)
+        {
+            List<MenusEntity> menusEntities = menuContext.Collection().Include(x => x.Type).ToList();
+            List <Menus> menulist = new List<Menus>();
+            if (sortType == "Name")
+            {
+               menusEntities = menusEntities.OrderBy(p => p.Name).Take(3).ToList();
+            }
+
+            else if(sortType == "Price")
+            {
+                menusEntities = menusEntities.OrderBy(p => p.Price).Take(3).ToList();
+            }
+            else if(sortType == "Type")
+            {
+                menusEntities = menusEntities.OrderBy(t => t.MenuTypeID).Take(3).ToList();
+            }
+
+            else
+            {
+                menusEntities = menuContext.Collection().ToList();
+            }
+            
+            foreach (var item in menusEntities)
+            {
+                menulist.Add(new Menus()
+                {
+                    Name = item.Name.ToLower(),
+                    Description = item.Description,
+                    Image = item.Image,
+                    Price = item.Price,
+                    MenuTypeID = item.MenuTypeID,
+                    Type = new MenuType() { ID= item.Type.ID, Name = item.Type.Name }
+                    
+                }); ;
+            }
+            int modelCount = menulist.Count();
+            return Json(new { menulist, modelCount });
         }
     }
 
