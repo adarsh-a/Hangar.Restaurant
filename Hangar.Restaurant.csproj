@@ -159,7 +159,6 @@
     <Compile Include="Models\MenuSection.cs" />
     <Compile Include="Models\MenuType.cs" />
     <Compile Include="Models\Reservation.cs" />
-    <Compile Include="Models\ReservationVM.cs" />
     <Compile Include="Models\SectionVM.cs" />
     <Compile Include="Models\SpecialMenu.cs" />
     <Compile Include="Models\Table.cs" />

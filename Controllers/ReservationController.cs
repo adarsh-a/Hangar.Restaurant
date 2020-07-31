@@ -24,32 +24,59 @@ namespace Hangar.Restaurant.Controllers
         // GET: Reservation
         public ActionResult Index()
         {
+            IEnumerable<SelectListItem> selListPers = new List<SelectListItem>() {
+                new SelectListItem() { Text = "1", Value = "1" },
+                new SelectListItem() { Text = "2", Value = "2" },
+                new SelectListItem() { Text = "3", Value = "3" },
+                new SelectListItem() { Text = "4", Value = "4" },
+                new SelectListItem() { Text = "5", Value = "5" },
+                new SelectListItem() { Text = "6", Value = "6" },
+                new SelectListItem() { Text = "7", Value = "7" },
+            };
 
-            ReservationVM model = new ReservationVM();
-            model.numOfPers = new List<SelectListItem>() {
-                new SelectListItem() { Text = "Select Person", Disabled = true},
-                new SelectListItem() { Text = "1", Value = 1.ToString()},
-                new SelectListItem() { Text = "2", Value = 2.ToString()},
-                new SelectListItem() { Text = "3", Value = 3.ToString()},
-                new SelectListItem() { Text = "4", Value = 4.ToString()},
-                new SelectListItem() { Text = "5", Value = 5.ToString()},
-                new SelectListItem() { Text = "6", Value = 6.ToString()},
-                new SelectListItem() { Text = "7", Value = 7.ToString()},
-        };
+            ViewBag.selectList = selListPers;
            
-            
-
-            return View(model);
+            return View();
         }
 
         [HttpPost]
-        [WebMethod]
         [AllowAnonymous]
-        public JsonResult bookFreeTable()
+        public ActionResult Index(Reservation form)
         {
-            return Json(new { });
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<SelectListItem> selListPers = new List<SelectListItem>() {
+                    new SelectListItem() { Text = "1", Value = "1" },
+                    new SelectListItem() { Text = "2", Value = "2" },
+                    new SelectListItem() { Text = "3", Value = "3" },
+                    new SelectListItem() { Text = "4", Value = "4" },
+                    new SelectListItem() { Text = "5", Value = "5" },
+                    new SelectListItem() { Text = "6", Value = "6" },
+                    new SelectListItem() { Text = "7", Value = "7" },
+                };
+
+                ViewBag.selectList = selListPers;
+                return View(form);
+            }
+
+            ReservationEntity entity = new ReservationEntity();
+            int newId = 1;
+
+            entity.ID = newId.ToString();
+            entity.name = form.name;
+            entity.numberOfPerson = form.numberOfPerson;
+            entity.tableId = "1";
+            entity.date = (DateTime)form.date;
+            entity.time = (DateTime)form.time;
+            entity.phoneNumber = form.phoneNumber;
+            entity.email = form.email;
+
+            reservationContext.Insert(entity);
+            reservationContext.Commit();
+
+            return RedirectToAction("Index");
         }
 
-        //controller -- 
+ 
     }
 }
