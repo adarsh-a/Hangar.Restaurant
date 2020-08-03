@@ -91,9 +91,11 @@ namespace Hangar.Restaurant.Controllers
             return output;
 
         }
-        public List<Menus> fetchMenu(int skipCount, int takeCount)
+        public LoadMore fetchMenu(int skipCount, int takeCount)
         {
-            List<MenusEntity> menuList = menuContext.Collection().Include(t => t.Type).OrderBy(p => p.Id).Take(takeCount).Skip(skipCount).ToList();
+            LoadMore lm = new LoadMore();
+            lm.ShowLoadMore = true;
+            List<MenusEntity> menuList = menuContext.Collection().Include(t => t.Type).OrderBy(p => p.Id).Skip(skipCount).Take(takeCount).ToList();
             List<MenuTypeEntity> menuTypeList = menuTypeContext.Collection().ToList();
             List<Menus> MenusModel = new List<Menus>();
 
@@ -109,7 +111,13 @@ namespace Hangar.Restaurant.Controllers
 
                 });
             }
-            return MenusModel;
+            lm.Menus = MenusModel;
+            var LoadMoreFlag = menuContext.Collection().Include(t => t.Type).OrderBy(p => p.Id).Skip(skipCount + takeCount).Take(1).ToList();
+            if (!LoadMoreFlag.Any())
+            {
+                lm.ShowLoadMore = false;
+            }
+            return lm;
         }
     }
 }

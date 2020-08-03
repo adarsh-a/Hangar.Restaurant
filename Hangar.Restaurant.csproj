@@ -154,6 +154,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoadMore.cs" />
     <Compile Include="Models\Menus.cs" />
     <Compile Include="Models\MenuSection.cs" />
     <Compile Include="Models\MenuType.cs" />
