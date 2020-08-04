@@ -241,6 +241,8 @@
     <Content Include="Content\js\legacy.js" />
     <Content Include="Content\js\loadMore.js" />
     <Content Include="Content\js\otherTabs.js" />
+    <Content Include="Content\js\parsley.js" />
+    <Content Include="Content\js\parsley.min.js" />
     <Content Include="Content\js\picker.date.js" />
     <Content Include="Content\js\picker.js" />
     <Content Include="Content\js\picker.time.js" />

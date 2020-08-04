@@ -1,25 +1,44 @@
-﻿window.onload = function() {
-    var reservationBtn = document.getElementById('submitReservation');
-    console.log('here');
+﻿$(document).ready(function() {
 
-    if (document.contains(reservationBtn)) {
+    if ($('#submitReservation').length) {
         disableOption();
-        checkInputs();
-    }
-}
+        checkForm();
 
-function checkInputs() {
-    var input1 = document.getElementById('input_date');
-    var input2 = document.getElementById('input_time');
-    var input3 = document.getElementById('person');
-    var input4 = document.getElementById('name');
-    var input5 = document.getElementById('email');
-    var input6 = document.getElementById('phone');
+        $("#input_date").on("change", function() {
+            checkForm();
+        });
+        $("#input_time").on("change", function() {
+            checkForm();
+        });
+        $("#person").on("change", function() {
+            checkForm();
+        });
+        $("#name").on("change", function() {
+            checkForm();
+        });
+        $("#email").on("change", function() {
+            checkForm();
+        });
+        $("#phone").on("change", function() {
+            checkForm();
+        });
+    }
+});
+
+function checkForm() {
+
+    var submit = $("#submitReservation");
+    var form = $("#reservationForm");
+    form.parsley();
+    if (form.parsley().isValid()) {
+        submit.prop('disabled', false);
+    } else {
+        submit.prop('disabled', true);
+    }
 }
 
 //disable "Select Person*"
 function disableOption() {
-    var dropdown = document.getElementById('person');
-    var option = dropdown.getElementsByTagName('option')[0];
-    option.disabled = true;
+    var dropdownOption = $('#person option:first-child');
+    dropdownOption.prop('disabled', true);
 }

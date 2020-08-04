@@ -15,6 +15,7 @@ namespace Hangar.Restaurant.Models
         [Required(ErrorMessage = "Enter a time")]
         public DateTime? time { get; set; }
         [Required(ErrorMessage = "Select a number of person")]
+        [Range(1,7,ErrorMessage ="Select a number of person")]
         public int numberOfPerson { get; set; }
         [Required(ErrorMessage = "Enter your name")]
         public string name { get; set; }
@@ -25,6 +26,5 @@ namespace Hangar.Restaurant.Models
         [ForeignKey("tableId")]
         public Table table { get; set; }
         public string tableId { get; set; }
-
     }
 }

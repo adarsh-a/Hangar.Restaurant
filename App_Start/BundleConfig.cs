@@ -27,6 +27,8 @@ namespace Hangar.Restaurant
                       "~/Content/js/contact-form-script.js",
                       "~/Content/js/loadMore.js",
                       "~/Content/js/otherTabs.js",
+                      "~/Content/js/parsley.js",
+                      "~/Content/js/parsley.min.js",
                       "~/Content/js/reservation.js"
                      ));
 

@@ -19,12 +19,9 @@ namespace Hangar.Restaurant.Controllers
         {
             reservationContext = reservationCon;
             tableContext = tableCon;
-        }
 
-        // GET: Reservation
-        public ActionResult Index()
-        {
-            IEnumerable<SelectListItem> selListPers = new List<SelectListItem>() {
+            //dropdown list items definition
+            ViewBag.selectList = new List<SelectListItem>() {
                 new SelectListItem() { Text = "1", Value = "1" },
                 new SelectListItem() { Text = "2", Value = "2" },
                 new SelectListItem() { Text = "3", Value = "3" },
@@ -34,8 +31,12 @@ namespace Hangar.Restaurant.Controllers
                 new SelectListItem() { Text = "7", Value = "7" },
             };
 
-            ViewBag.selectList = selListPers;
-           
+        }
+
+        // GET: Reservation
+        public ActionResult Index()
+        {
+            
             return View();
         }
 
@@ -46,18 +47,7 @@ namespace Hangar.Restaurant.Controllers
             ReservationEntity entity = new ReservationEntity();
 
             if (!ModelState.IsValid)
-            {
-                IEnumerable<SelectListItem> selListPers = new List<SelectListItem>() {
-                    new SelectListItem() { Text = "1", Value = "1" },
-                    new SelectListItem() { Text = "2", Value = "2" },
-                    new SelectListItem() { Text = "3", Value = "3" },
-                    new SelectListItem() { Text = "4", Value = "4" },
-                    new SelectListItem() { Text = "5", Value = "5" },
-                    new SelectListItem() { Text = "6", Value = "6" },
-                    new SelectListItem() { Text = "7", Value = "7" },
-                };
-
-                ViewBag.selectList = selListPers;
+            { 
                 
                 return View(form);
             }
@@ -91,18 +81,8 @@ namespace Hangar.Restaurant.Controllers
             
             if(tableId > 10)
             {
-                IEnumerable<SelectListItem> selListPers = new List<SelectListItem>() {
-                    new SelectListItem() { Text = "1", Value = "1" },
-                    new SelectListItem() { Text = "2", Value = "2" },
-                    new SelectListItem() { Text = "3", Value = "3" },
-                    new SelectListItem() { Text = "4", Value = "4" },
-                    new SelectListItem() { Text = "5", Value = "5" },
-                    new SelectListItem() { Text = "6", Value = "6" },
-                    new SelectListItem() { Text = "7", Value = "7" },
-                };
-
-                ViewBag.selectList = selListPers;
-                ViewBag.allBooked = true;
+                ViewBag.booked = true;
+                ViewBag.msg = "No table available on that specific date and time";
 
                 return View(form);
             }
