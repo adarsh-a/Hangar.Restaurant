@@ -11,7 +11,7 @@ namespace Hangar.Restaurant.DB.Database.Models
     public class ReservationEntity
     {
         [Key]
-        public string ID { get; set; }
+        public int ID { get; set; }
         public DateTime date { get; set; }
         public DateTime time { get; set; }
         public int numberOfPerson { get; set; }
@@ -20,7 +20,7 @@ namespace Hangar.Restaurant.DB.Database.Models
         public string phoneNumber { get; set; }
         [ForeignKey("tableId")]
         public TableEntity table { get; set; }
-        public string tableId { get; set; }
+        public int tableId { get; set; }
 
         //table enity -- id{1-10} name
         // reservation table

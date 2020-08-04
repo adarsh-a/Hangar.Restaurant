@@ -68,11 +68,19 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="submit-button text-center">
-                                    <input class="btn btn-common" id="submit" type="submit" value="Book Table"/>
+                                    <input class="btn btn-common" id="submitReservation" type="submit" value="Book Table"/>
                                     <div id="msgSubmit" class="h3 text-center hidden"></div>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
+                            @if (ViewBag.allBooked != null && ViewBag.allBooked == true)
+                            {
+                            <div class="col-md-12">
+                                <div class="text-center">
+                                    <div class="h3 text-center">Cannot book on that specific date and time</div>
+                                </div>
+                            </div>
+                            }
                         </div>
                     }
                 </div>

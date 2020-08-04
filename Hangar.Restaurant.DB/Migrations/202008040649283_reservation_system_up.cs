@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class reservation_system : DbMigration
+    public partial class reservation_system_up : DbMigration
     {
         public override void Up()
         {
@@ -11,24 +11,24 @@
                 "dbo.ReservationEntity",
                 c => new
                     {
-                        ID = c.String(nullable: false, maxLength: 128),
+                        ID = c.Int(nullable: false, identity: true),
                         date = c.DateTime(nullable: false),
                         time = c.DateTime(nullable: false),
                         numberOfPerson = c.Int(nullable: false),
                         name = c.String(),
                         email = c.String(),
                         phoneNumber = c.String(),
-                        table_ID = c.String(maxLength: 128),
+                        tableId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.TableEntity", t => t.table_ID)
-                .Index(t => t.table_ID);
+                .ForeignKey("dbo.TableEntity", t => t.tableId, cascadeDelete: true)
+                .Index(t => t.tableId);
             
             CreateTable(
                 "dbo.TableEntity",
                 c => new
                     {
-                        ID = c.String(nullable: false, maxLength: 128),
+                        ID = c.Int(nullable: false, identity: true),
                         name = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
@@ -37,8 +37,8 @@
         
         public override void Down()
         {
-            DropForeignKey("dbo.ReservationEntity", "table_ID", "dbo.TableEntity");
-            DropIndex("dbo.ReservationEntity", new[] { "table_ID" });
+            DropForeignKey("dbo.ReservationEntity", "tableId", "dbo.TableEntity");
+            DropIndex("dbo.ReservationEntity", new[] { "tableId" });
             DropTable("dbo.TableEntity");
             DropTable("dbo.ReservationEntity");
         }

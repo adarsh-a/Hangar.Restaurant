@@ -92,13 +92,13 @@
     <Compile Include="Migrations\202007201226273_new_table_banner.designer.cs">
       <DependentUpon>202007201226273_new_table_banner.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202007300740065_reservation_system.cs" />
-    <Compile Include="Migrations\202007300740065_reservation_system.designer.cs">
-      <DependentUpon>202007300740065_reservation_system.cs</DependentUpon>
+    <Compile Include="Migrations\202008040648156_reservation_system_drop.cs" />
+    <Compile Include="Migrations\202008040648156_reservation_system_drop.designer.cs">
+      <DependentUpon>202008040648156_reservation_system_drop.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202007300743368_foreign_key_added.cs" />
-    <Compile Include="Migrations\202007300743368_foreign_key_added.designer.cs">
-      <DependentUpon>202007300743368_foreign_key_added.cs</DependentUpon>
+    <Compile Include="Migrations\202008040649283_reservation_system_up.cs" />
+    <Compile Include="Migrations\202008040649283_reservation_system_up.designer.cs">
+      <DependentUpon>202008040649283_reservation_system_up.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -133,11 +133,11 @@
     <EmbeddedResource Include="Migrations\202007201226273_new_table_banner.resx">
       <DependentUpon>202007201226273_new_table_banner.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202007300740065_reservation_system.resx">
-      <DependentUpon>202007300740065_reservation_system.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008040648156_reservation_system_drop.resx">
+      <DependentUpon>202008040648156_reservation_system_drop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202007300743368_foreign_key_added.resx">
-      <DependentUpon>202007300743368_foreign_key_added.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008040649283_reservation_system_up.resx">
+      <DependentUpon>202008040649283_reservation_system_up.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -7,13 +7,13 @@ namespace Hangar.Restaurant.DB.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class reservation_system : IMigrationMetadata
+    public sealed partial class reservation_system_drop : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(reservation_system));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(reservation_system_drop));
         
         string IMigrationMetadata.Id
         {
-            get { return "202007300740065_reservation_system"; }
+            get { return "202008040648156_reservation_system_drop"; }
         }
         
         string IMigrationMetadata.Source

@@ -245,6 +245,7 @@
     <Content Include="Content\js\picker.js" />
     <Content Include="Content\js\picker.time.js" />
     <Content Include="Content\js\popper.min.js" />
+    <Content Include="Content\js\reservation.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\fonts\fontawesome-webfont.eot" />

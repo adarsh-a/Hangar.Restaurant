@@ -25,5 +25,6 @@ namespace Hangar.Restaurant.Models
         [ForeignKey("tableId")]
         public Table table { get; set; }
         public string tableId { get; set; }
+
     }
 }
