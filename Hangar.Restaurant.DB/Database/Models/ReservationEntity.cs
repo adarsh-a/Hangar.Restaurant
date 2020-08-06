@@ -12,8 +12,7 @@ namespace Hangar.Restaurant.DB.Database.Models
     {
         [Key]
         public int ID { get; set; }
-        public DateTime date { get; set; }
-        public DateTime time { get; set; }
+        public DateTime dateAndTime { get; set; }
         public int numberOfPerson { get; set; }
         public string name { get; set; }
         public string email { get; set; }

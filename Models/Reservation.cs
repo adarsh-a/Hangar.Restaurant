@@ -11,9 +11,9 @@ namespace Hangar.Restaurant.Models
     public class Reservation
     {
         [Required(ErrorMessage = "Enter a date")]
-        public DateTime? date { get; set; }
+        public DateTime date { get; set; }
         [Required(ErrorMessage = "Enter a time")]
-        public DateTime? time { get; set; }
+        public DateTime time { get; set; }
         [Required(ErrorMessage = "Select a number of person")]
         [Range(1,7,ErrorMessage ="Select a number of person")]
         public int numberOfPerson { get; set; }

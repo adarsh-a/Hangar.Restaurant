@@ -100,6 +100,10 @@
     <Compile Include="Migrations\202008040649283_reservation_system_up.designer.cs">
       <DependentUpon>202008040649283_reservation_system_up.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008060724232_combine_date_time.cs" />
+    <Compile Include="Migrations\202008060724232_combine_date_time.designer.cs">
+      <DependentUpon>202008060724232_combine_date_time.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\SQLRepository.cs" />
@@ -138,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008040649283_reservation_system_up.resx">
       <DependentUpon>202008040649283_reservation_system_up.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008060724232_combine_date_time.resx">
+      <DependentUpon>202008060724232_combine_date_time.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
