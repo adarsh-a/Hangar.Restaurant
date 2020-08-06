@@ -77,7 +77,7 @@ namespace Hangar.Restaurant.Controllers
             if (tableId > 10)
             {
                 //cannot book at that date and time
-                ViewBag.booked = true;
+                ViewBag.color = "text-danger";
                 ViewBag.msg = "No table available on that specific date and time";
 
                 return View(form);
@@ -97,7 +97,11 @@ namespace Hangar.Restaurant.Controllers
             //send confirmation mail
             sendEmail(entity.email, entity.name, entity.dateAndTime, entity.numberOfPerson);
 
-            return RedirectToAction("Index");
+            //Show successful message to user
+            ViewBag.color = "text-success";
+            ViewBag.msg = "Your reservation was done successfully.<br>You will soon get an email";
+
+            return View();
         }
 
         private static void sendEmail(string email, string name, DateTime dateAndTime, int person)

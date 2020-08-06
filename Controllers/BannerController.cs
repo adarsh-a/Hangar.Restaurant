@@ -39,5 +39,13 @@ namespace Hangar.Restaurant.Controllers
 
             return PartialView(bannerModel);
         }
+
+        public PartialViewResult GeneralBanner()
+        {
+            //get parent controller name to display on banner
+            ViewBag.controller = ControllerContext.ParentActionViewContext.RouteData.Values["controller"].ToString();
+
+            return PartialView();
+        }
     }
 }

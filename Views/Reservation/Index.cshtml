@@ -66,11 +66,11 @@
                                 </div>
                             </div>
                         </div>
-                        @if (ViewBag.booked != null && ViewBag.booked == true)
+                        @if (ViewBag.color != null && ViewBag.msg != null)
                         {
                             <div class="col-md-12">
                                 <div class="text-center">
-                                    <h2 class="text-danger">@ViewBag.msg</h2>
+                                    <h2 class="@ViewBag.color">@Html.Raw(ViewBag.msg)</h2>
                                 </div>
                             </div>
                         }
