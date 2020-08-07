@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Services;
@@ -43,7 +44,7 @@ namespace Hangar.Restaurant.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Index(Reservation form)
+        public async Task<ActionResult> Index(Reservation form)
         {
             ReservationEntity entity = new ReservationEntity();
 
@@ -95,7 +96,7 @@ namespace Hangar.Restaurant.Controllers
             reservationContext.Commit();
 
             //send confirmation mail
-            sendEmail(entity.email, entity.name, entity.dateAndTime, entity.numberOfPerson);
+            await sendEmailAsync(entity.email, entity.name, entity.dateAndTime, entity.numberOfPerson);
 
             //Show successful message to user
             ViewBag.color = "text-success";
@@ -104,7 +105,7 @@ namespace Hangar.Restaurant.Controllers
             return View();
         }
 
-        private static void sendEmail(string email, string name, DateTime dateAndTime, int person)
+        private static async Task sendEmailAsync(string email, string name, DateTime dateAndTime, int person)
         {
             MailAddress from = new MailAddress("info@mail.restaurant");
             MailAddress to = new MailAddress(email);
@@ -121,7 +122,7 @@ namespace Hangar.Restaurant.Controllers
                 "<h4>Thank you.</h4>";
 
             SmtpClient smtp = new SmtpClient();
-            smtp.Send(message);
+            await smtp.SendMailAsync(message);
         }
 
  
