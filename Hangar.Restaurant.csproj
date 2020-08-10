@@ -153,6 +153,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\BannerController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\MenuSectionController.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminUser.cs" />
     <Compile Include="Models\Banner.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\MenuSection.cs" />
@@ -297,6 +299,7 @@
     <Content Include="Views\Reservation\Index.cshtml" />
     <Content Include="Views\Banner\GeneralBanner.cshtml" />
     <Content Include="Views\Navigation\Index.cshtml" />
+    <Content Include="Views\Dashboard\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Hangar.Restaurant.DB\Hangar.Restaurant.DB.csproj">

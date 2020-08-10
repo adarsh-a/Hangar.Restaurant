@@ -1,17 +1,22 @@
 ﻿using Hangar.Restaurant.Database.Models;
 using Hangar.Restaurant.DB.Database.Models;
 using Hangar.Restaurant.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Hangar.Restaurant.Database
 {
-    public class RestaurantDbContext : DbContext
+    public class RestaurantDbContext : IdentityDbContext
     {
         public RestaurantDbContext() : base("RestaurantDbContext")
         {
 
         }
+        // Identity Dbset
+        public DbSet<AdminUserEntity> adminUsers { get; set; }
+
+        // Other Dbset
         public DbSet<MenuSectionEntity> MenuSection { get; set; }
         public DbSet<MenuTypeEntity> MenuTypes { get; set; }
         public DbSet<MenuEntity> Menus { get; set; }
@@ -21,9 +26,9 @@ namespace Hangar.Restaurant.Database
         public DbSet<TableEntity> Tables { get; set; }
 
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        /*protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
+        }*/
     }
 }
