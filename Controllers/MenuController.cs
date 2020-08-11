@@ -11,6 +11,7 @@ using System.Web.Services;
 
 namespace Hangar.Restaurant.Controllers
 {
+    
     public class MenuController : Controller
     {
         private IRepositoryBase<MenuEntity> menuContext;

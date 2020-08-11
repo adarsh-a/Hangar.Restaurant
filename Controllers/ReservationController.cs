@@ -50,7 +50,6 @@ namespace Hangar.Restaurant.Controllers
 
             if (!ModelState.IsValid)
             {
-
                 return View(form);
             }
 

@@ -58,7 +58,14 @@
                             </div>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                        <li class="nav-item">@Html.ActionLink("Login", "Register", "Dashboard", new { area = "" }, new { @class = "nav-link" })</li>
+                        @if (User.Identity.Name == null || User.Identity.Name =="")
+                        {
+                        <li class="nav-item">@Html.ActionLink("Login", "Login", "Dashboard", new { area = "" }, new { @class = "nav-link" })</li>
+                        }
+                        else
+                        {
+                        <li class="nav-item">@Html.ActionLink("Logout", "Logout", "Dashboard", new { area = "" }, new { @class = "nav-link" })</li>
+                        }
                     </ul>
                 </div>
             </div>

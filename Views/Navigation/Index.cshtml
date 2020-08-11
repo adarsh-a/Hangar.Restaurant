@@ -15,7 +15,7 @@
                     <li class="nav-item dropdown @ViewBag.dropactive">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown-a">
-                            @Html.ActionLink("Reservation", "Index", "Reservation", new { area = "" }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Reservation", "Login", "Reservation", new { area = "" }, new { @class = "dropdown-item" })
                             <a class="dropdown-item" href="stuff.html">Stuff</a>
                             <a class="dropdown-item" href="gallery.html">Gallery</a>
                         </div>
@@ -28,7 +28,14 @@
                         </div>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item">@Html.ActionLink("Login", "Index", "Dashboard", new { area = "" }, new { @class = "nav-link" })</li>
+                    @if(User.Identity.Name == null|| User.Identity.Name == "")
+                    {
+                    <li class="nav-item">@Html.ActionLink("Login", "Login", "Dashboard", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+                    else
+                    {
+                    <li class="nav-item">@Html.ActionLink("Logout", "Logout", "Dashboard", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
                 </ul>
             </div>
         </div>

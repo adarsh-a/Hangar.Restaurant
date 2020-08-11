@@ -4,27 +4,36 @@ using Hangar.Restaurant.DB.Database.Models;
 using Hangar.Restaurant.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
+using Microsoft.Owin.Security;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace Hangar.Restaurant.Controllers
 {
-    [Authorize]
     public class DashboardController : Controller
     {
-       
-        [AllowAnonymous]
+        private IRepositoryBase<AdminUserEntity> userContext;
+
+        public DashboardController(IRepositoryBase<AdminUserEntity> userCon)
+        {
+            userContext = userCon;
+        }
+
+        [Authorize]
+        public ActionResult Index()
+        {
+            ViewBag.UserMessage = "Hello " + User.Identity.Name;
+
+            return View();
+        }
+
         public ActionResult Register()
         {
 
             return View();
         }
         [HttpPost]
-        [AllowAnonymous]
         public ActionResult Register(RegisterVM form)
         {
             // requires the dbContext not dbset
@@ -47,14 +56,71 @@ namespace Hangar.Restaurant.Controllers
 
             if (result.Succeeded)
             {
-                ViewBag.StatusMessage = string.Format("User {0} was created successfully!", user.UserName);
+                //sign in the user
+                var authenticationManager = HttpContext.GetOwinContext().Authentication;
+                var userIdentity = manager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
+                authenticationManager.SignIn(new AuthenticationProperties() { }, userIdentity);
+
+                RedirectToAction("Index");
             }
             else
             {
-                ViewBag.StatusMessage = result.Errors.FirstOrDefault();
+                ViewBag.StatusMessage = "Account already registered";
             }
 
             return View();
+        }
+        
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginVM form)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(form);
+            }
+            RestaurantDbContext restoContext = new RestaurantDbContext();
+
+            var userStore = new UserStore<IdentityUser>(restoContext);
+            var userManager = new UserManager<IdentityUser>(userStore);
+            //var user = userManager.Find(form.Email, form.Password);
+
+            AdminUser temp = new AdminUser()
+            {
+                UserName = form.Email,
+                PasswordHash = form.Password.GetHashCode().ToString()
+            };
+
+            var us = userContext.Collection().Where(u => u.UserName == temp.Email).FirstOrDefault();
+
+            if(us != null)
+            {
+                //sign in the user
+                var authenticationManager = HttpContext.GetOwinContext().Authentication;
+                var userIdentity = userManager.CreateIdentity(us, DefaultAuthenticationTypes.ApplicationCookie);
+                authenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = false }, userIdentity);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.StatusMessage = "Invalid email or password";
+            }
+            return View(form);
+        }
+
+        [Authorize]
+        public ActionResult Logout()
+        {
+            var authenticationManager = HttpContext.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+
+            return RedirectToAction("Index", "Home");
+
         }
     }
 }

@@ -1,0 +1,39 @@
+﻿@model Hangar.Restaurant.Models.LoginVM
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+}
+
+    <div class="container">
+        <div class="card bg-light">
+            <article class="card-body mx-auto" style="max-width: 400px;">
+                @using (Html.BeginForm("Login", "Dashboard", FormMethod.Post))
+                {
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                        </div>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email address" })
+                        <br />
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div> <!-- form-group// -->
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        </div>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Create password" })
+                        <br />
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div> <!-- form-group// -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"> Sign in  </button>
+                    </div> <!-- form-group// -->
+                    <p class="text-center">Don't have an account? @Html.ActionLink("Register", "Register", "Dashboard") </p>
+                    if (@ViewBag.StatusMessage != null)
+                    {
+                        <p class="text-center text-danger">@ViewBag.StatusMessage</p>
+                    }
+                }
+            </article>
+        </div> <!-- card.// -->
+</div>
