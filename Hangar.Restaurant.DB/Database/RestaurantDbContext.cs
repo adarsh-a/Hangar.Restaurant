@@ -7,14 +7,12 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Hangar.Restaurant.Database
 {
-    public class RestaurantDbContext : IdentityDbContext
+    public class RestaurantDbContext : IdentityDbContext<AdminUserEntity>
     {
         public RestaurantDbContext() : base("RestaurantDbContext")
         {
 
         }
-        // Identity Dbset
-        public DbSet<AdminUserEntity> adminUsers { get; set; }
 
         // Other Dbset
         public DbSet<MenuSectionEntity> MenuSection { get; set; }

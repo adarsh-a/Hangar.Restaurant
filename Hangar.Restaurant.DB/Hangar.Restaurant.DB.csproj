@@ -119,6 +119,18 @@
     <Compile Include="Migrations\202008101116468_register.designer.cs">
       <DependentUpon>202008101116468_register.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008120634498_context_adjust.cs" />
+    <Compile Include="Migrations\202008120634498_context_adjust.designer.cs">
+      <DependentUpon>202008120634498_context_adjust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008120739380_user-adjust.cs" />
+    <Compile Include="Migrations\202008120739380_user-adjust.designer.cs">
+      <DependentUpon>202008120739380_user-adjust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008120801061_identity.cs" />
+    <Compile Include="Migrations\202008120801061_identity.designer.cs">
+      <DependentUpon>202008120801061_identity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\SQLRepository.cs" />
@@ -166,6 +178,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008101116468_register.resx">
       <DependentUpon>202008101116468_register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008120634498_context_adjust.resx">
+      <DependentUpon>202008120634498_context_adjust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008120739380_user-adjust.resx">
+      <DependentUpon>202008120739380_user-adjust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008120801061_identity.resx">
+      <DependentUpon>202008120801061_identity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

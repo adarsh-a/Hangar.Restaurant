@@ -39,8 +39,8 @@ namespace Hangar.Restaurant.Controllers
             // requires the dbContext not dbset
             RestaurantDbContext restoContext = new RestaurantDbContext();
 
-            var userStore = new UserStore<IdentityUser>(restoContext);
-            var manager = new UserManager<IdentityUser>(userStore);
+            var userStore = new UserStore<AdminUserEntity>(restoContext);
+            var manager = new UserManager<AdminUserEntity>(userStore);
 
             if (!ModelState.IsValid)
             {
@@ -61,7 +61,7 @@ namespace Hangar.Restaurant.Controllers
                 var userIdentity = manager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                 authenticationManager.SignIn(new AuthenticationProperties() { }, userIdentity);
 
-                RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
             else
             {
@@ -85,23 +85,19 @@ namespace Hangar.Restaurant.Controllers
             }
             RestaurantDbContext restoContext = new RestaurantDbContext();
 
-            var userStore = new UserStore<IdentityUser>(restoContext);
-            var userManager = new UserManager<IdentityUser>(userStore);
-            //var user = userManager.Find(form.Email, form.Password);
+            var userStore = new UserStore<AdminUserEntity>(restoContext);
+            var userManager = new UserManager<AdminUserEntity>(userStore);
 
-            AdminUser temp = new AdminUser()
-            {
-                UserName = form.Email,
-                PasswordHash = form.Password.GetHashCode().ToString()
-            };
 
-            var us = userContext.Collection().Where(u => u.UserName == temp.Email).FirstOrDefault();
+            string passHash = form.Password.GetHashCode().ToString();
 
-            if(us != null)
+            var user = userContext.Collection().Where(m => m.UserName == form.Email && m.PasswordHash == passHash).FirstOrDefault();
+
+            if(user != null)
             {
                 //sign in the user
                 var authenticationManager = HttpContext.GetOwinContext().Authentication;
-                var userIdentity = userManager.CreateIdentity(us, DefaultAuthenticationTypes.ApplicationCookie);
+                var userIdentity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                 authenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = false }, userIdentity);
 
                 return RedirectToAction("Index");
@@ -110,6 +106,7 @@ namespace Hangar.Restaurant.Controllers
             {
                 ViewBag.StatusMessage = "Invalid email or password";
             }
+
             return View(form);
         }
 
