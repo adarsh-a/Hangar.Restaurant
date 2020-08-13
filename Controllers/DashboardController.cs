@@ -21,11 +21,40 @@ namespace Hangar.Restaurant.Controllers
         }
 
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Edit()
         {
-            ViewBag.UserMessage = "Hello " + User.Identity.Name;
+            string userId =  User.Identity.GetUserId();
 
-            return View();
+            AdminUserEntity entity = userContext.Find(userId);
+            EditVM user = new EditVM()
+            {
+                Email = entity.Email,
+                PhoneNumber = entity.PhoneNumber,
+            };
+
+
+            return View(user);
+        }
+        
+        [HttpPost]
+        [Authorize]
+        public ActionResult Edit(EditVM editForm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(editForm);
+            }
+            string hashPass = editForm.Password.GetHashCode().ToString();
+
+            AdminUserEntity entity = userContext.Find(User.Identity.GetUserId());
+
+            entity.PasswordHash = hashPass;
+            entity.PhoneNumber = editForm.PhoneNumber;
+
+            userContext.Update(entity);
+            userContext.Commit();
+
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Register()
@@ -61,7 +90,7 @@ namespace Hangar.Restaurant.Controllers
                 var userIdentity = manager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                 authenticationManager.SignIn(new AuthenticationProperties() { }, userIdentity);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -100,7 +129,7 @@ namespace Hangar.Restaurant.Controllers
                 var userIdentity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                 authenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = false }, userIdentity);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit");
             }
             else
             {
