@@ -323,7 +323,7 @@
     <Content Include="Views\Navigation\Index.cshtml" />
     <Content Include="Views\Dashboard\Register.cshtml" />
     <Content Include="Views\Dashboard\Login.cshtml" />
-    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Dashboard\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Hangar.Restaurant.DB\Hangar.Restaurant.DB.csproj">

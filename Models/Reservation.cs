@@ -20,8 +20,11 @@ namespace Hangar.Restaurant.Models
         [Required(ErrorMessage = "Enter your name")]
         public string name { get; set; }
         [Required(ErrorMessage = "Enter your email")]
+        [EmailAddress(ErrorMessage = "Invalid email adress")]
         public string email { get; set; }
         [Required(ErrorMessage = "Enter your phone number")]
+        [Phone]
+        [Display(Name ="Phone Number")]
         public string phoneNumber { get; set; }
         [ForeignKey("tableId")]
         public Table table { get; set; }

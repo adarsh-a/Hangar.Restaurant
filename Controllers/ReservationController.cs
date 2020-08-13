@@ -48,11 +48,6 @@ namespace Hangar.Restaurant.Controllers
         {
             ReservationEntity entity = new ReservationEntity();
 
-            if (!ModelState.IsValid)
-            {
-                return View(form);
-            }
-
             DateTime reservationDateTime = new DateTime(
                 form.date.Year,
                 form.date.Month,
@@ -61,12 +56,37 @@ namespace Hangar.Restaurant.Controllers
                 form.time.Minute,
                 form.time.Second);
             int tableId;
-            var specificEntities = reservationContext.Collection().Where(ent => ent.dateAndTime == reservationDateTime)
-                .ToList();
+            int TABLELIMIT = 10;
 
+            if (!ModelState.IsValid)
+            {
+
+                return View(form);
+            }
+
+            if (reservationDateTime <= DateTime.Now)
+            {
+                ViewBag.color = "text-danger";
+                ViewBag.msg = "Cannot book in the past";
+
+                return View(form);
+            }
+            var specificEntities = reservationContext.Collection().Where(ent => ent.dateAndTime == reservationDateTime).ToList();
+
+            // define id for table 
             if (specificEntities.Count() != 0)
             {
                 tableId = specificEntities.Select(ent => ent.tableId).ToList().Max() + 1;
+                
+                // Reserved tables on that specific date and time reaches maximum
+                if (tableId > TABLELIMIT)
+                {
+                    // cannot book at that date and time
+                    ViewBag.color = "text-danger";
+                    ViewBag.msg = "No table available on that specific date and time";
+
+                    return View(form);
+                }
             }
             else
             {
@@ -74,16 +94,7 @@ namespace Hangar.Restaurant.Controllers
             }
 
 
-            if (tableId > 10)
-            {
-                //cannot book at that date and time
-                ViewBag.color = "text-danger";
-                ViewBag.msg = "No table available on that specific date and time";
-
-                return View(form);
-            }
-
-            //not necessary to put ID as it auto increments in DB
+            // not necessary to put ID as it auto increments in DB
             entity.name = form.name;
             entity.numberOfPerson = form.numberOfPerson;
             entity.tableId = tableId;
@@ -94,10 +105,10 @@ namespace Hangar.Restaurant.Controllers
             reservationContext.Insert(entity);
             reservationContext.Commit();
 
-            //send confirmation mail
+            // send confirmation mail
             await sendEmailAsync(entity.email, entity.name, entity.dateAndTime, entity.numberOfPerson);
 
-            //Show successful message to user
+            // Show successful message to user
             ViewBag.color = "text-success";
             ViewBag.msg = "Your reservation was done successfully.<br>You will soon get an email";
 

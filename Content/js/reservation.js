@@ -4,6 +4,7 @@
         disableOption();
         checkForm();
 
+        //dropdown
         $("#input_date").on("change", function() {
             checkForm();
         });
@@ -13,13 +14,15 @@
         $("#person").on("change", function() {
             checkForm();
         });
-        $("#name").on("change", function() {
+
+        // textbox
+        $("#name").on("input", function() {
             checkForm();
         });
-        $("#email").on("change", function() {
+        $("#email").on("input", function() {
             checkForm();
         });
-        $("#phone").on("change", function() {
+        $("#phone").on("input", function() {
             checkForm();
         });
     }
