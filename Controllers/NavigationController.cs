@@ -13,16 +13,25 @@ namespace Hangar.Restaurant.Controllers
         {
             //get parent controller name to display on banner
             string control = ViewBag.controller = ControllerContext.ParentActionViewContext.RouteData.Values["controller"].ToString();
+            string active = "active";
 
             if(control == "Reservation" || control == "Stuff" || control == "Gallery")
             {
-                ViewBag.dropactive = "active";
+                ViewBag.dropActive = active;
             }
             else if(control == "Menu")
             {
-                ViewBag.menuactive = "active";
+                ViewBag.menuActive = active;
             }
-            return PartialView();
+            else if(control == "Home")
+            {
+                ViewBag.homeActive = active;
+            }
+            else if(control == "Dashboard")
+            {
+                @ViewBag.dashActive = active;
+            }
+            return PartialView("~/Views/Shared/Navigation.cshtml");
         }
     }
 }

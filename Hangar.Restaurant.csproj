@@ -311,6 +311,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Mails\" />
     <Folder Include="Views\MenuSection\" />
+    <Folder Include="Views\Navigation\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -320,7 +321,7 @@
     <Content Include="Views\Shared\_LayoutGeneral.cshtml" />
     <Content Include="Views\Reservation\Index.cshtml" />
     <Content Include="Views\Banner\GeneralBanner.cshtml" />
-    <Content Include="Views\Navigation\Index.cshtml" />
+    <Content Include="Views\Shared\Navigation.cshtml" />
     <Content Include="Views\Dashboard\Register.cshtml" />
     <Content Include="Views\Dashboard\Login.cshtml" />
     <Content Include="Views\Dashboard\Edit.cshtml" />
