@@ -16,11 +16,13 @@ namespace Hangar.Restaurant.Controllers
     {
         private IRepositoryBase<ReservationEntity> reservationContext;
         private IRepositoryBase<TableEntity> tableContext;
+        private IMail mailcontext;
 
-        public ReservationController(IRepositoryBase<ReservationEntity> reservationCon, IRepositoryBase<TableEntity> tableCon)
+        public ReservationController(IRepositoryBase<ReservationEntity> reservationCon, IRepositoryBase<TableEntity> tableCon, IMail mailCon)
         {
             reservationContext = reservationCon;
             tableContext = tableCon;
+            mailcontext = mailCon;
 
             //dropdown list items definition
             ViewBag.selectList = new List<SelectListItem>() {
@@ -77,7 +79,7 @@ namespace Hangar.Restaurant.Controllers
             if (specificEntities.Count() != 0)
             {
                 tableId = specificEntities.Select(ent => ent.tableId).ToList().Max() + 1;
-                
+
                 // Reserved tables on that specific date and time reaches maximum
                 if (tableId > TABLELIMIT)
                 {
@@ -106,7 +108,7 @@ namespace Hangar.Restaurant.Controllers
             reservationContext.Commit();
 
             // send confirmation mail
-            await sendEmailAsync(entity.email, entity.name, entity.dateAndTime, entity.numberOfPerson);
+            await mailcontext.ReservationAsync(entity.email, entity.name, entity.dateAndTime, entity.numberOfPerson);
 
             // Show successful message to user
             ViewBag.color = "text-success";
@@ -114,27 +116,15 @@ namespace Hangar.Restaurant.Controllers
 
             return View();
         }
-
-        private static async Task sendEmailAsync(string email, string name, DateTime dateAndTime, int person)
+        
+        [HttpPost]
+        [AllowAnonymous]
+        [WebMethod]
+        public JsonResult Reservation()
         {
-            MailAddress from = new MailAddress("info@mail.restaurant");
-            MailAddress to = new MailAddress(email);
-            MailMessage message = new MailMessage(from, to);
-            message.Subject = "Reservation at restaurant";
-            message.IsBodyHtml = true;
-            message.Body = "<h1>Live Dinner Restaurant<h1><br>" +
-                "<h2>Dear Mr/Mrs " + name + ",</h2>" +
-                "<h3>A table have been reserved for you. Hereunder are the details:</h3>" +
-                "<h4>Name: " + name + "</h4>" +
-                "<h4>Date: " + dateAndTime.Day + "/" + dateAndTime.Month + "/" + dateAndTime.Year + "</h4>" +
-                "<h4>Time: " + dateAndTime.TimeOfDay + "</h4>" +
-                "<h4>No. of person(s): " + person + "</h4>" +
-                "<h4>Thank you.</h4>";
+            string he = "hello";
 
-            SmtpClient smtp = new SmtpClient();
-            await smtp.SendMailAsync(message);
+            return Json(new { he });
         }
-
- 
     }
 }

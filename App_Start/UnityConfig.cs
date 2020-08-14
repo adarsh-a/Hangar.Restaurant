@@ -3,6 +3,7 @@ using Hangar.Restaurant.Database.Models;
 using Hangar.Restaurant.DB.Database.Models;
 using Hangar.Restaurant.DB.Repository;
 using Hangar.Restaurant.Models;
+using Hangar.Restaurant.Repository;
 using System;
 
 using Unity;
@@ -55,6 +56,7 @@ namespace Hangar.Restaurant
             container.RegisterType<IRepositoryBase<ReservationEntity>, SQLRepository<ReservationEntity>>();
             container.RegisterType<IRepositoryBase<TableEntity>, SQLRepository<TableEntity>>();
             container.RegisterType<IRepositoryBase<AdminUserEntity>, SQLRepository<AdminUserEntity>>();
+            container.RegisterType<IMail, MailRepository>();
         }
     }
 }
