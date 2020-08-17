@@ -10,21 +10,11 @@ namespace Hangar.Restaurant.Models
 {
     public class Reservation
     {
-        [Required(ErrorMessage = "Enter a date")]
         public DateTime date { get; set; }
-        [Required(ErrorMessage = "Enter a time")]
         public DateTime time { get; set; }
-        [Required(ErrorMessage = "Select a number of person")]
-        [Range(1,7,ErrorMessage ="Select a number of person")]
         public int numberOfPerson { get; set; }
-        [Required(ErrorMessage = "Enter your name")]
         public string name { get; set; }
-        [Required(ErrorMessage = "Enter your email")]
-        [EmailAddress(ErrorMessage = "Invalid email adress")]
         public string email { get; set; }
-        [Required(ErrorMessage = "Enter your phone number")]
-        [Phone]
-        [Display(Name ="Phone Number")]
         public string phoneNumber { get; set; }
         [ForeignKey("tableId")]
         public Table table { get; set; }
