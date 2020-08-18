@@ -1,6 +1,7 @@
 ﻿using Hangar.Restaurant.Contracts;
 using Hangar.Restaurant.DB.Database.Models;
 using Hangar.Restaurant.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,16 +32,19 @@ namespace Hangar.Restaurant.Controllers
 
             return View();
         }
-        
+
         [HttpPost]
         [AllowAnonymous]
         [WebMethod]
-        public async Task<JsonResult> Reservation(string[] reservationForm)
+        public async Task<JsonResult> Reservation(string reservationForm)
         {
+            // Deserialize and assign to a Reservation model
+            Reservation model = JsonConvert.DeserializeObject<Reservation>(reservationForm);
+
             ReservationEntity entity = new ReservationEntity();
 
-            DateTime reservationDate = DateTime.Parse(reservationForm[0]);
-            DateTime reservationTime = DateTime.Parse(reservationForm[1]);
+            DateTime reservationDate = model.date;
+            DateTime reservationTime = model.time;
             DateTime reservationDateTime = new DateTime(
                 reservationDate.Year,
                 reservationDate.Month,
@@ -87,10 +91,10 @@ namespace Hangar.Restaurant.Controllers
 
             //assign all to their specific constructor on entity
             entity.dateAndTime = reservationDateTime;
-            entity.numberOfPerson = int.Parse(reservationForm[2]);
-            entity.name = reservationForm[3];
-            entity.email = reservationForm[4];
-            entity.phoneNumber = reservationForm[5];
+            entity.numberOfPerson = model.numberOfPerson;
+            entity.name = model.name;
+            entity.email = model.email;
+            entity.phoneNumber = model.phoneNumber;
             entity.tableId = tableId;
 
             reservationContext.Insert(entity);

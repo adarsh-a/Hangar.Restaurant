@@ -46,8 +46,10 @@ function sendReservation() {
     var form = $("#reservationForm").serializeArray();
     var formData = [];
     for (i = 0; i < form.length; i++) {
-        formData.push(form[i].value)
+        formData[form[i].name] = form[i].value
     }
+    // Serialize form
+    formData = JSON.stringify(Object.assign({}, formData));
 
     $.ajax({
         type: "POST",
@@ -58,12 +60,19 @@ function sendReservation() {
         },
         failure: function(response) {
             alert("fail" + response);
+        },
+        beforeSend: function() {
+            // Show loading image
+            $("#imgLoading").css("display", "block");
         }
     })
 }
 
 function displayMessage(color, message) {
     var msgDiv = $("#reserveMessage")
-    msgDiv.addClass(color);
+    msgDiv.attr("class", "h3 text-center hidden " + color);
     msgDiv.html(message);
+
+    // Hide loading image
+    $("#imgLoading").css("display", "none");
 }
