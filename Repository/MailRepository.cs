@@ -1,6 +1,7 @@
 ﻿using Hangar.Restaurant.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Mail;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace Hangar.Restaurant.Repository
 
         public async Task ReservationAsync(string email, string name, DateTime dateAndTime, int person)
         {
-            MailAddress from = new MailAddress("info@mail.restaurant");
+            MailAddress from = new MailAddress(ConfigurationManager.AppSettings["hostEmail"]);
             MailAddress to = new MailAddress(email);
             MailMessage message = new MailMessage(from, to);
             message.Subject = "Reservation at restaurant";
