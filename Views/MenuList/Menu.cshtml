@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Hangar.Restaurant.Models.Menu>
+
+@using Hangar.Restaurant.Models;
+
+@{
+
+
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+<div style="padding-top:100px"></div>
+<h2>Menu</h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MealName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MealPrice)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MealName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MealPrice)
+            </td>
+            <td>
+
+                @Html.ActionLink("Add to cart", "AddToCart", new { itemId = item.Id }, new { @class = "add-to-cart" })
+
+
+</td>
+        </tr>
+    }
+
+
+
+
+
+</table>
+
+<div>
+    @{
+
+
+        Html.RenderPartial("~/Views/Customer/Register.cshtml", new Customer());
+
+
+    }
+
+</div>
+

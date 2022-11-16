@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+@using Hangar.Restaurant.Models;
+<!DOCTYPE html>
 <html lang="en">
 <!-- Basic -->
 <head>
@@ -40,7 +42,7 @@
                 <div class="collapse navbar-collapse" id="navbars-rs-food">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+                        <li class="nav-item">@Html.ActionLink("Menu", "Menu", new { controller = "MenuList" }, new { @class = "nav-link" })</li>
                         <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>
@@ -57,6 +59,48 @@
                                 <a class="dropdown-item" href="blog-details.html">blog Single</a>
                             </div>
                         </li>
+
+
+
+
+
+                        @*Cart*@
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Cart(3)</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-a">
+
+                            @if (Session["cart"] != null)
+                            {
+
+                                foreach (var menu in (List<Menu>)Session["cart"])
+                                {
+
+
+
+
+
+
+
+
+                                }
+                            }
+
+
+                            </div>
+                    </li>
+
+
+
+
+
+
+
+
+
+
+
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     </ul>
                 </div>

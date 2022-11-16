@@ -11,9 +11,17 @@ namespace Hangar.Restaurant.Database
         }
         public DbSet<MenuSectionEntity> MenuSection { get; set; }
 
+        public DbSet<CustomerEntity> Customer { get; set; }
+
+        public DbSet<MenuEntity> Menu { get; set; }
+
+        public DbSet<Order> Order { get; set; }
+        public object MenuEntity { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
+
     }
 }
