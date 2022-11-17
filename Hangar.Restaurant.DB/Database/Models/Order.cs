@@ -10,7 +10,7 @@ namespace Hangar.Restaurant.Database.Models
     {
         public int Id { get; set; }
 
-        public int CustomerId { get; set; }
+        public string CustomerId { get; set; }
 
         public string OrderDetails { get; set; }
 

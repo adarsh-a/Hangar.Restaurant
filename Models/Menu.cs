@@ -10,7 +10,6 @@ namespace Hangar.Restaurant.Models
 
         public int Id { get; set; }
         public string MealName { get; set; }
-        public string MealPrice { get; set; }
         public int Quantity { get; internal set; }
     }
 }

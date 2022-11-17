@@ -67,16 +67,15 @@
                         @*Cart*@
 
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Cart(3)</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown-a">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Cart(3)</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown-a">
 
-                            @if (Session["cart"] != null)
-                            {
-
-                                foreach (var menu in (List<Menu>)Session["cart"])
+                                @if (Session["cart"] != null)
                                 {
 
+                                    foreach (var menu in (List<Menu>)Session["cart"])
+                                    {
 
 
 
@@ -84,24 +83,19 @@
 
 
 
+
+                                    }
                                 }
-                            }
 
 
                             </div>
-                    </li>
-
-
-
-
-
-
-
-
-
+                        </li>
 
 
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
+
+
                     </ul>
                 </div>
             </div>

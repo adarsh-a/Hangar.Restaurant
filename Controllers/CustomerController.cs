@@ -23,32 +23,6 @@ namespace Hangar.Restaurant.Controllers
             return View(customers);
         }
 
-        public ActionResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Register(Customer cust)
-        {
-            //var customer = FetchCustomer();
-            var customer = Index();
-
-            //check db, if cust exists,
-            //return customer id
-            //else create customer
-            //then return customer id 
-
-           
-
-
-
-
-            return View();
-        }
-
-
-
 
 
 

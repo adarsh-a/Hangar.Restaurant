@@ -238,7 +238,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\CustomerOrder\" />
+    <Folder Include="Views\Customer\" />
     <Folder Include="Views\MenuSection\" />
   </ItemGroup>
   <ItemGroup>
@@ -246,7 +246,8 @@
     <Content Include="Views\PartialView\Menus.cshtml" />
     <Content Include="Views\MenuList\Menu.cshtml" />
     <Content Include="Views\Shared\_LayoutMenu.cshtml" />
-    <Content Include="Views\Customer\Register.cshtml" />
+    <Content Include="Views\CustomerOrder\Index.cshtml" />
+    <Content Include="Views\CustomerOrder\PlaceOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Hangar.Restaurant.DB\Hangar.Restaurant.DB.csproj">

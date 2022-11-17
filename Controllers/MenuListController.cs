@@ -12,7 +12,7 @@ namespace Hangar.Restaurant.Controllers
     {
 
         private RestaurantDbContext db = new RestaurantDbContext();
-
+        
         // GET: MenuList
         public ActionResult Menu()
         {
@@ -21,12 +21,14 @@ namespace Hangar.Restaurant.Controllers
             return View(menuList);
         }
 
-        public ActionResult AddToCart(string itemId = null)
+        public ActionResult AddToCart(string itemId = null, string itemName = null)
         {
+            
             if (!string.IsNullOrEmpty(itemId))
             {
                 int id = Int32.Parse(itemId);
 
+                
                 if (Session["cart"] == null)
                 {
 
@@ -37,6 +39,7 @@ namespace Hangar.Restaurant.Controllers
                     cart.Add(new Menu()
                     {
                         Id = menuitem.Id,
+                        MealName = itemName,
                         Quantity = 1
                     });
                     Session["cart"] = cart;
@@ -64,7 +67,9 @@ namespace Hangar.Restaurant.Controllers
                         cart.Add(new Menu()
                         {
                             Id = id,
-                            Quantity = 1
+                            Quantity = 1,
+                            MealName = itemName
+
                         });
                     }
 
@@ -97,7 +102,7 @@ namespace Hangar.Restaurant.Controllers
                     var menu = new Menu();
                     menu.Id = currentMenu.Id;
                     menu.MealName = currentMenu.MealName;
-                    menu.MealPrice = currentMenu.MealPrice;
+                    //menu.MealPrice = currentMenu.MealPrice;
                     menuList.Add(menu);
                 }
 

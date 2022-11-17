@@ -18,9 +18,9 @@
         <th>
             @Html.DisplayNameFor(model => model.MealName)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.MealPrice)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -30,17 +30,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.MealName)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.MealPrice)
-            </td>
+            </td>*@
             <td>
 
-                @Html.ActionLink("Add to cart", "AddToCart", new { itemId = item.Id }, new { @class = "add-to-cart" })
+                @Html.ActionLink("Add to cart", "AddToCart", new { itemId = item.Id , itemName = item.MealName }, new { @class = "add-to-cart" })
 
 
-</td>
+            </td>
         </tr>
     }
+
+    
+
 
 
 
@@ -48,14 +51,28 @@
 
 </table>
 
-<div>
-    @{
 
 
-        Html.RenderPartial("~/Views/Customer/Register.cshtml", new Customer());
 
 
-    }
+<div class="form-group">
 
+    <div class="col-md-offset-2 col-md-10">
+
+        @Html.ActionLink("Place order", "PlaceOrder", new { controller = "CustomerOrder" })
+
+        @*<input type="submit" value="Place order" style="margin-left: auto; margin-right: auto; display: block; margin-top: 10%; margin-bottom: 0% " id="Submit" class="btn btn-default" onclick="location.href='@Html.ActionLink("Place order", "PlaceOrder", new { controller = "CustomerOrder" })'" />*@
+    </div>
 </div>
+
+@*<div>
+        @{
+
+
+            Html.RenderPartial("~/Views/CustomerOrder/Index.cshtml", new Order());
+
+
+        }
+
+    </div>*@
 
