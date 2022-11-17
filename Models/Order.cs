@@ -14,19 +14,5 @@ namespace Hangar.Restaurant.Models
         public int TotalPrice { get; set; }
         public int CustomerId { get; set; }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

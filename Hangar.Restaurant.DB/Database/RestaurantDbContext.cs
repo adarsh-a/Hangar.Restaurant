@@ -6,7 +6,7 @@ namespace Hangar.Restaurant.Database
 {
     public class RestaurantDbContext : DbContext
     {
-        public RestaurantDbContext() : base("RestaurantDbContext")
+        public RestaurantDbContext() : base("DefaultConnection")
         {
         }
         public DbSet<MenuSectionEntity> MenuSection { get; set; }

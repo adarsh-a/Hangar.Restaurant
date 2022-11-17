@@ -64,31 +64,33 @@
 
 
                         @*<li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Cart(3)</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown-a">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Cart(3)</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown-a">
 
-                                @if (Session["cart"] != null)
-                                {
+                @if (Session["cart"] != null)
+                {
 
-                                    foreach (var menu in (List<Menu>)Session["cart"])
-                                    {
-
-
+                    foreach (var menu in (List<Menu>)Session["cart"])
+                    {
 
 
 
 
 
 
-                                    }
-                                }
 
 
-                            </div>
-                        </li>*@
+                    }
+                }
+
+
+            </div>
+        </li>*@
 
 
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item">@Html.ActionLink("Sales order", "OrderInfo", new { controller = "Admin" }, new { @class = "nav-link" })</li>
+
                     </ul>
                 </div>
             </div>

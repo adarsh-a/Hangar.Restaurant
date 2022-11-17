@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Hangar.Restaurant.Models.OrderInfo>
+
+@using Hangar.Restaurant.Models;
+
+@{
+
+
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+<div style="padding-top:100px"></div>
+<h2>Orders</h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table class="table">
+    <tr>
+        <th>
+            Customer Info
+        </th>
+        <th>
+                Order Details
+            </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerDetails.FirstName)  @Html.DisplayFor(modelItem => item.CustomerDetails.LastName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDetails.OrderDetails)
+            </td>
+            
+        </tr>
+    }
+    </table>
+
+
+
