@@ -13,6 +13,7 @@ namespace Hangar.Restaurant.Controllers
         private RestaurantDbContext db = new RestaurantDbContext();
 
         //GET: Admin
+        [Authorize]
         public ActionResult RetrieveAllOrders()
         {
             List<OrderInfo> OrderList = new List<OrderInfo>();
